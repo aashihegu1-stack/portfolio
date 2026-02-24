@@ -43,6 +43,11 @@ Hi! My name is [Aashi Hegu]
             Turtle
         </div>
     </a>
+    <a href="{{site.baseurl}}/Blackjack" style="text-decoration: none;">
+        <div style="background-color: #000e00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Blackjack
+        </div>
+    </a>
 </div>
 
 <br>
