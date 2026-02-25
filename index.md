@@ -48,9 +48,19 @@ Hi! My name is [Aashi Hegu]
             Blackjack
         </div>
     </a>
-    <a href="{{site.baseurl}}/Homework" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/homeworks" style="text-decoration: none;">
         <div style="background-color: #990a7f; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Blackjack
+            Homeworks
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/achievements" style="text-decoration: none;">
+        <div style="background-color: #ca761d; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Achievements
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/Natm" style="text-decoration: none;">
+        <div style="background-color: #18559b; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            N@TM
         </div>
     </a>
 </div>
