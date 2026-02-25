@@ -34,17 +34,17 @@ Hi! My name is [Aashi Hegu]
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
     <a href="{{site.baseurl}}/snake" style="text-decoration: none;">
-        <div style="background-color: #00FF00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+        <div style="background-color: #dada16; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
             Snake Game
         </div>
     </a>
     <a href="{{site.baseurl}}/turtle" style="text-decoration: none;">
-        <div style="background-color: #FF0000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+        <div style="background-color: #1ac762; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
             Turtle
         </div>
     </a>
     <a href="{{site.baseurl}}/blackjack/" style="text-decoration: none;">
-        <div style="background-color: #000e00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+        <div style="background-color: #f10909; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
             Blackjack
         </div>
     </a>
