@@ -16,5 +16,6 @@ This page collects links to the JavaScript lesson homeworks so you can quickly o
 * [Iteration]({{ site.baseurl }}/js/iterations)
 * [Math Expressions]({{ site.baseurl }}/js/math)
 * [Nested Conditionals]({{ site.baseurl }}/js/nested-conditionals)
+* [Classes]({{ site.baseurl }}/js/classes/homework)
 
 > Click a link to open the associated lesson and complete the homework.
