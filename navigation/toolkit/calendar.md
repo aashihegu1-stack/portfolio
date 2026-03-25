@@ -1,7 +1,7 @@
 ---
 title: Calendar
 permalink: /student/calendar
-layout: aesthetihawkc
+layout: aesthetihawk
 active_tab: calendar
 ---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">

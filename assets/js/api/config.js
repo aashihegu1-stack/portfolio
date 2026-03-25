@@ -1,13 +1,15 @@
 ---
 ---
 
+// ^^ Do not remove the above front matter, it is required for Jekyll processing
+
 export const baseurl = "{{ site.baseurl }}";
 
 export var pythonURI;
 if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
     pythonURI = "http://localhost:8587";  // Same URI for localhost or 127.0.0.1
 } else {
-    pythonURI = "https://flaskstu.opencodingsociety.com";
+    pythonURI = "https://flask.opencodingsociety.com";
 
 }
 
@@ -16,7 +18,7 @@ export var javaURI;
 if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
         javaURI = "http://localhost:8585";
 } else {
-    javaURI = "https://springstu.opencodingsociety.com";
+    javaURI = "https://spring.opencodingsociety.com";
 }
 
 export const fetchOptions = {
