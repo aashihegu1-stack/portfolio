@@ -17,7 +17,7 @@ import Transform from './Transform.js';
  * @method handleReaction - Handles player reaction / state updates to the collision.
  */
 class GameObject {
-    
+ 
     constructor(gameEnv = null) {
         if (new.target === GameObject) {
             throw new TypeError("Cannot construct GameObject instances directly");
@@ -130,6 +130,60 @@ class GameObject {
         throw new Error("Method 'destroy()' must be implemented.");
     }
 
+    /**
+     * Check if a point (canvas/game coordinates) is inside this object's hitbox.
+     * @param {number} x - X coordinate (canvas/game space)
+     * @param {number} y - Y coordinate (canvas/game space)
+     * @returns {boolean} True if point is inside hitbox
+     */
+    isPointInside(x, y) {
+        // Use this.position, this.pixels, this.hitbox, etc.
+        const px = this.position?.x ?? this.INIT_POSITION?.x ?? 0;
+        const py = this.position?.y ?? this.INIT_POSITION?.y ?? 0;
+        let width = this.pixels?.width || (this.hitbox?.widthPercentage ? this.hitbox.widthPercentage * (this.gameEnv?.innerWidth || 1) : 32);
+        let height = this.pixels?.height || (this.hitbox?.heightPercentage ? this.hitbox.heightPercentage * (this.gameEnv?.innerHeight || 1) : 32);
+        return (x >= px && x <= px + width && y >= py && y <= py + height);
+    }
+
+    /**
+     * Handle click/touch interaction. Override in subclasses for custom behavior.
+     */
+    handleClick() {
+        // Default: do nothing. Subclasses can override for interactivity.
+    }
+
+    /**
+     * Returns the center point of this object.
+     */
+    getCenter() {
+        return {
+            x: (this.x || 0) + ((this.width || 0) / 2),
+            y: (this.y || 0) + ((this.height || 0) / 2)
+        };
+    }
+
+    /**
+     * Returns the Euclidean distance from this object to another object.
+     * @param {*} other - Another GameObject-like object with x/y coordinates.
+     */
+    getDistanceTo(other) {
+        if (!other) return Infinity;
+        const a = this.getCenter();
+        const b = typeof other.getCenter === 'function'
+            ? other.getCenter()
+            : { x: other.x || 0, y: other.y || 0 };
+        return Math.hypot(b.x - a.x, b.y - a.y);
+    }
+
+    /**
+     * Returns true if the other object is within the supplied distance.
+     * @param {*} other - Another GameObject-like object.
+     * @param {number} distance - Maximum interaction distance.
+     */
+    isNear(other, distance = 100) {
+        return this.getDistanceTo(other) <= distance;
+    }
+
     /** Collision checks
      * uses Player isCollision to detect hit
      * calls collisionAction on hit
@@ -161,33 +215,37 @@ class GameObject {
         const thisRect = this.canvas.getBoundingClientRect();
         const otherRect = other.canvas.getBoundingClientRect();
 
-        // Calculate hitbox constants for this object
-        const thisWidthReduction = thisRect.width * (this.hitbox?.widthPercentage || 0.0);
-        const thisHeightReduction = thisRect.height * (this.hitbox?.heightPercentage || 0.0);
+        // Calculate hitbox reductions for this object (applied symmetrically from all sides)
+        const thisWidthReduction = thisRect.width * (this.hitbox?.widthPercentage || 0.0) / 2;
+        const thisHeightReduction = thisRect.height * (this.hitbox?.heightPercentage || 0.0) / 2;
 
-        // Calculate hitbox constants for other object
-        const otherWidthReduction = otherRect.width * (other.hitbox?.widthPercentage || 0.0);
-        const otherHeightReduction = otherRect.height * (other.hitbox?.heightPercentage || 0.0);
+        // Calculate hitbox reductions for other object (applied symmetrically from all sides)
+        const otherWidthReduction = otherRect.width * (other.hitbox?.widthPercentage || 0.0) / 2;
+        const otherHeightReduction = otherRect.height * (other.hitbox?.heightPercentage || 0.0) / 2;
 
-        // Build hitbox by subtracting reductions from the left, right, and top
+        // Build symmetric hitbox by subtracting reductions from all sides
         const thisLeft = thisRect.left + thisWidthReduction;
         const thisTop = thisRect.top + thisHeightReduction;
         const thisRight = thisRect.right - thisWidthReduction;
-        const thisBottom = thisRect.bottom;
+        const thisBottom = thisRect.bottom - thisHeightReduction;
 
         const otherLeft = otherRect.left + otherWidthReduction;
         const otherTop = otherRect.top + otherHeightReduction;
         const otherRight = otherRect.right - otherWidthReduction;
-        const otherBottom = otherRect.bottom;
+        const otherBottom = otherRect.bottom - otherHeightReduction;
 
-        // Determine hit and touch points of hit
-        const hit = (
-            thisLeft < otherRight &&
-            thisRight > otherLeft &&
-            thisTop < otherBottom &&
-            thisBottom > otherTop
-        );
-
+        // Circular collision detection (default and only option)
+        const thisCenterX = (thisLeft + thisRight) / 2;
+        const thisCenterY = (thisTop + thisBottom) / 2;
+        const otherCenterX = (otherLeft + otherRight) / 2;
+        const otherCenterY = (otherTop + otherBottom) / 2;
+        const thisRadiusPercent = this.hitbox?.radiusPercentage ?? 0.5;
+        const otherRadiusPercent = other.hitbox?.radiusPercentage ?? 0.5;
+        const thisRadius = Math.min(thisRight - thisLeft, thisBottom - thisTop) * thisRadiusPercent;
+        const otherRadius = Math.min(otherRight - otherLeft, otherBottom - otherTop) * otherRadiusPercent;
+        const distance = Math.hypot(thisCenterX - otherCenterX, thisCenterY - otherCenterY);
+        const hit = distance < thisRadius + otherRadius;
+      
         const touchPoints = {
             this: {
                 id: this.canvas.id,
@@ -221,17 +279,17 @@ class GameObject {
         if (!this.state.collisionEvents.includes(objectOther.id)) {
             // add the collisionType to the collisions array, making it the current collision
             this.state.collisionEvents.push(objectOther.id);
-            // Clear any stale pressed key state on player-like objects before running
-            // collision reactions. This avoids cases where a blocking dialog
-            // (for example `alert()`) steals focus and prevents keyup events
-            // from firing, leaving movement keys stuck.
-            try {
-                for (const obj of this.gameEnv.gameObjects) {
-                    if (obj && typeof obj === 'object' && obj.pressedKeys && typeof obj.pressedKeys === 'object') {
-                        obj.pressedKeys = {};
+            // Some games rely on preserving held inputs (for example platformers).
+            // Keep legacy key clearing behavior unless an object opts out.
+            if (this.clearPressedKeysOnCollision !== false) {
+                try {
+                    for (const obj of this.gameEnv.gameObjects) {
+                        if (obj && typeof obj === 'object' && obj.pressedKeys && typeof obj.pressedKeys === 'object') {
+                            obj.pressedKeys = {};
+                        }
                     }
-                }
-            } catch (_) {}
+                } catch (_) {}
+            }
 
             this.handleCollisionReaction(objectOther);
         }
@@ -243,7 +301,15 @@ class GameObject {
      * @param {*} other 
      */
     handleCollisionReaction(other) {
-    // First check if reaction is a function that can be called
+        // Avoid auto-triggering explicit interactables until the player presses E or clicks.
+        const targetObject = other && other.id
+            ? this.gameEnv.gameObjects.find(obj => obj.spriteData && obj.spriteData.id === other.id)
+            : null;
+        if (targetObject && typeof targetObject.interact === 'function') {
+            return;
+        }
+
+        // First check if reaction is a function that can be called
         if (other && other.reaction && typeof other.reaction === "function") {
             other.reaction();
             return;
@@ -306,6 +372,40 @@ class GameObject {
                 }
             }
         }
+    }
+
+    /**
+     * Debug method: Draw collision circle on canvas context
+     * Call this in your game loop for objects you want to debug
+     */
+    debugDrawCollisionCircle(ctx) {
+        if (!this.canvas) return;
+        
+        const thisRect = this.canvas.getBoundingClientRect();
+        const thisWidthReduction = thisRect.width * (this.hitbox?.widthPercentage || 0.0) / 2;
+        const thisHeightReduction = thisRect.height * (this.hitbox?.heightPercentage || 0.0) / 2;
+        
+        const thisLeft = thisRect.left + thisWidthReduction;
+        const thisTop = thisRect.top + thisHeightReduction;
+        const thisRight = thisRect.right - thisWidthReduction;
+        const thisBottom = thisRect.bottom - thisHeightReduction;
+        
+        const centerX = (thisLeft + thisRight) / 2;
+        const centerY = (thisTop + thisBottom) / 2;
+        const radius = this.hitbox?.radius || Math.min(thisRight - thisLeft, thisBottom - thisTop) / 2;
+        
+        // Draw the collision circle
+        ctx.strokeStyle = '#FF0000';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        // Draw center point
+        ctx.fillStyle = '#FF0000';
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 5, 0, Math.PI * 2);
+        ctx.fill();
     }
 }
 
