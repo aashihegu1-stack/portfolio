@@ -33,30 +33,55 @@ Hi! My name is [Your Full Name]
 
 <br>
 
-### My Lessons
+### CS 111/ College ready
 
-> Foundations in Tech are essential, click to see some of my lesson creations.
+> Here is everything I learned this class, all organized by topic for CS 111/ College ready click to see these in the browser
 
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="{{site.baseurl}}/code/javascript" style="text-decoration: none;">
-        <div style="background-color: var(--green); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           JS Basics
+    <a href="#" style="text-decoration: none;">
+        <div style="background-color: #FF0000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
+           Object Oriented Programming
         </div>
     </a>
-    <a href="{{site.baseurl}}/game/essentials/variables" style="text-decoration: none;">
-        <div style="background-color: var(--blue); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           JS Variables
+    <a href="#" style="text-decoration: none;">
+        <div style="background-color: #FF7F00; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
+           Control Structures
         </div>
     </a>
-    <a href="{{site.baseurl}}/gamerunner" style="text-decoration: none;">
-        <div style="background-color: var(--warn); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           Gamerunner
+    <a href="#" style="text-decoration: none;">
+        <div style="background-color: #FFD700; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
+           Data Types
         </div>
     </a>
-    <a href="{{site.baseurl}}/network/stack" style="text-decoration: none;">
-        <div style="background-color: var(--orange); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           Networking
+    <a href="#" style="text-decoration: none;">
+        <div style="background-color: #00C853; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
+           Operators
+        </div>
+    </a>
+    <a href="#" style="text-decoration: none;">
+        <div style="background-color: #2196F3; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
+           Input/Output
+        </div>
+    </a>
+    <a href="#" style="text-decoration: none;">
+        <div style="background-color: #3F51B5; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
+           Documentation
+        </div>
+    </a>
+    <a href="#" style="text-decoration: none;">
+        <div style="background-color: #9C27B0; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
+           Debugging
+        </div>
+    </a>
+    <a href="#" style="text-decoration: none;">
+        <div style="background-color: #E91E63; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
+           Testing &amp; Verification
+        </div>
+    </a>
+    <a href="#" style="text-decoration: none;">
+        <div style="background-color: #FF00FF; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
+           Summary
         </div>
     </a>
 </div>
