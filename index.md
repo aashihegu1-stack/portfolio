@@ -5,7 +5,7 @@ hide: true
 show_reading_time: false
 ---
 
-Hi! My name is [Your Full Name]
+Hi! My name is Aashi Hegu
 
 ### Development Environment
 
@@ -39,47 +39,47 @@ Hi! My name is [Your Full Name]
 
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="#" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/cs111/oop" style="text-decoration: none;">
         <div style="background-color: #FF0000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
            Object Oriented Programming
         </div>
     </a>
-    <a href="#" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/cs111/control-structures" style="text-decoration: none;">
         <div style="background-color: #FF7F00; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
            Control Structures
         </div>
     </a>
-    <a href="#" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/cs111/data-types" style="text-decoration: none;">
         <div style="background-color: #FFD700; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
            Data Types
         </div>
     </a>
-    <a href="#" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/cs111/operators" style="text-decoration: none;">
         <div style="background-color: #00C853; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
            Operators
         </div>
     </a>
-    <a href="#" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/cs111/input-output" style="text-decoration: none;">
         <div style="background-color: #2196F3; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
            Input/Output
         </div>
     </a>
-    <a href="#" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/cs111/documentation" style="text-decoration: none;">
         <div style="background-color: #3F51B5; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
            Documentation
         </div>
     </a>
-    <a href="#" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/cs111/debugging" style="text-decoration: none;">
         <div style="background-color: #9C27B0; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
            Debugging
         </div>
     </a>
-    <a href="#" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/cs111/testing" style="text-decoration: none;">
         <div style="background-color: #E91E63; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
            Testing &amp; Verification
         </div>
     </a>
-    <a href="#" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/cs111/summary" style="text-decoration: none;">
         <div style="background-color: #FF00FF; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
            Summary
         </div>
