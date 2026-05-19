@@ -131,7 +131,7 @@ Operators are the little symbols that actually do the work — combining values,
     <button class="tab-btn" data-tab="bool">Boolean</button>
 </div>
 
-<div class="tab-panel active" data-panel="math">
+<div markdown="1" class="tab-panel active" data-panel="math">
 <h3>Mathematical Operators</h3>
 <p>Math operators handle anything where numbers change.</p>
 
@@ -144,7 +144,7 @@ velocity * 2 // multiplication — accelerate
 <p>Used for movement, physics, gravity, damage, animation timing, and cooldowns. Anything that updates over time is built on math.</p>
 </div>
 
-<div class="tab-panel" data-panel="str">
+<div markdown="1" class="tab-panel" data-panel="str">
 <h3>String Operators</h3>
 <p>String operators are for stitching text together and pulling parts out.</p>
 
@@ -157,7 +157,7 @@ velocity * 2 // multiplication — accelerate
 <p>Used for NPC state labels, sprite file paths, dynamic UI text, and dialogue.</p>
 </div>
 
-<div class="tab-panel" data-panel="bool">
+<div markdown="1" class="tab-panel" data-panel="bool">
 <h3>Boolean Expressions</h3>
 <p>Boolean operators decide whether something is true or not.</p>
 

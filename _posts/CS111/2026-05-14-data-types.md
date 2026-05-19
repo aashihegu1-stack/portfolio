@@ -139,7 +139,7 @@ Data types tell your code what kind of value it's working with — and what that
     <button class="tab-btn" data-tab="obj">Object</button>
 </div>
 
-<div class="tab-panel active" data-panel="num">
+<div markdown="1" class="tab-panel active" data-panel="num">
 <h3>Number</h3>
 <p>Numbers cover anything that ticks, counts, or measures.</p>
 
@@ -150,7 +150,7 @@ velocity: 3
 <p>Physics, health, movement speed, animation timing, hit detection — if it changes frame by frame, it's a number.</p>
 </div>
 
-<div class="tab-panel" data-panel="str">
+<div markdown="1" class="tab-panel" data-panel="str">
 <h3>String</h3>
 <p>Strings hold text — labels, modes, identifiers.</p>
 
@@ -161,7 +161,7 @@ state: "hostile"
 <p>NPC behavior modes, sprite paths, dialogue, item and quest IDs all live as strings.</p>
 </div>
 
-<div class="tab-panel" data-panel="bool">
+<div markdown="1" class="tab-panel" data-panel="bool">
 <h3>Boolean</h3>
 <p>The simplest type in the language. Just <code>true</code> or <code>false</code> — nothing else.</p>
 
@@ -172,7 +172,7 @@ isPaused: true
 <p>Game loop control, AI flags, visibility toggles, invincibility frames, input handling — anything that has only two states.</p>
 </div>
 
-<div class="tab-panel" data-panel="arr">
+<div markdown="1" class="tab-panel" data-panel="arr">
 <h3>Array</h3>
 <p>An ordered list of values, usually all of the same kind.</p>
 
@@ -183,7 +183,7 @@ gameObjects[]
 <p>Every active sprite, every enemy or bullet group, particle effects, inventory slots, level layouts.</p>
 </div>
 
-<div class="tab-panel" data-panel="obj">
+<div markdown="1" class="tab-panel" data-panel="obj">
 <h3>JSON Object</h3>
 <p>A bundle of related properties grouped under one name.</p>
 

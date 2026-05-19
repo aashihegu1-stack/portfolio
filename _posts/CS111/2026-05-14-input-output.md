@@ -135,7 +135,7 @@ I/O is the conversation your game has with the world. Information flows in — f
     <button class="tab-btn" data-tab="canvas">Canvas</button>
 </div>
 
-<div class="tab-panel active" data-panel="kb">
+<div markdown="1" class="tab-panel active" data-panel="kb">
 <h3>Keyboard Events — Input</h3>
 <p>Translates physical key presses into in-game actions.</p>
 
@@ -148,7 +148,7 @@ window.addEventListener("keydown", (e) => {
 <p><code>keydown</code> fires on press, <code>keyup</code> on release. Used for movement, jumping, attacking, menu navigation.</p>
 </div>
 
-<div class="tab-panel" data-panel="env">
+<div markdown="1" class="tab-panel" data-panel="env">
 <h3>GameEnv Config — Input</h3>
 <p>System-level input that's set once at startup — not from the player, from your own code.</p>
 
@@ -159,7 +159,7 @@ const gameEnv = { gravity: 0.4, debug: false };
 <p>Defines canvas size, gravity, physics, difficulty, and asset paths. Everything else builds on top of these values.</p>
 </div>
 
-<div class="tab-panel" data-panel="api">
+<div markdown="1" class="tab-panel" data-panel="api">
 <h3>API Calls — Input + Output</h3>
 <p>Two-way communication with a server.</p>
 
@@ -172,7 +172,7 @@ fetch("/api/score")
 <p>Sends data out and gets data back. Used for leaderboards, cloud saves, dynamic AI, multiplayer.</p>
 </div>
 
-<div class="tab-panel" data-panel="canvas">
+<div markdown="1" class="tab-panel" data-panel="canvas">
 <h3>Canvas Rendering — Output</h3>
 <p>Draws everything the player sees, every frame.</p>
 

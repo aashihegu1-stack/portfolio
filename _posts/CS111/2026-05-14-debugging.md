@@ -185,7 +185,7 @@ if (this.canvas) this.canvas.style.display = 'none';</code></pre>
     <button class="tab-btn" data-tab="element">Element</button>
 </div>
 
-<div class="tab-panel active" data-panel="console">
+<div markdown="1" class="tab-panel active" data-panel="console">
 <h3>Console Debugging — Gem.js · Guard.js · heistMusic.js</h3>
 <p>Print whatever needs to be visible right now.</p>
 
@@ -196,7 +196,7 @@ console.warn('Background music: failed to start', error);
 ```
 </div>
 
-<div class="tab-panel" data-panel="hitbox">
+<div markdown="1" class="tab-panel" data-panel="hitbox">
 <h3>Hitbox Visualization — HeistL1.js · HeistL3.js</h3>
 <p>Render collision zones as semi-transparent green overlays so you can see where walls actually are.</p>
 
@@ -209,7 +209,7 @@ const border_top = {
 ```
 </div>
 
-<div class="tab-panel" data-panel="source">
+<div markdown="1" class="tab-panel" data-panel="source">
 <h3>Source-Level Debugging — Guard.js · Gem.js</h3>
 <p>Strategic log calls double as breakpoint targets in DevTools.</p>
 
@@ -219,7 +219,7 @@ console.log("Collision has occurred...");         // Guard.js
 ```
 </div>
 
-<div class="tab-panel" data-panel="network">
+<div markdown="1" class="tab-panel" data-panel="network">
 <h3>Network Debugging — heistMusic.js</h3>
 <p>Check the response and throw a descriptive error when a fetch fails.</p>
 
@@ -230,7 +230,7 @@ const data = await response.json();
 ```
 </div>
 
-<div class="tab-panel" data-panel="app">
+<div markdown="1" class="tab-panel" data-panel="app">
 <h3>Application Debugging — Gem.js · heistMusic.js</h3>
 <p>State stored on <code>gameEnv</code> and runtime flags — all inspectable in DevTools.</p>
 
@@ -240,7 +240,7 @@ this.started = true;                              // heistMusic.js
 ```
 </div>
 
-<div class="tab-panel" data-panel="element">
+<div markdown="1" class="tab-panel" data-panel="element">
 <h3>Element Inspection — heistMusic.js · Gem.js</h3>
 <p>Runtime DOM changes you can inspect in the Elements tab.</p>
 

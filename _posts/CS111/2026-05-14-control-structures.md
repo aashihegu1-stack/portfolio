@@ -138,7 +138,7 @@ Control structures decide which lines of code actually run, when they run, and h
     <button class="tab-btn" data-tab="nest">Nested</button>
 </div>
 
-<div class="tab-panel active" data-panel="iter">
+<div markdown="1" class="tab-panel active" data-panel="iter">
 <h3>Iteration — Repeat</h3>
 <p>Loops let you write a block once and have the computer run it as many times as you need. Pick the loop type that matches how the repetition ends.</p>
 
@@ -151,7 +151,7 @@ Control structures decide which lines of code actually run, when they run, and h
 <p>In games: updating sprites every frame, scanning collisions, running AI ticks, processing inventory.</p>
 </div>
 
-<div class="tab-panel" data-panel="cond">
+<div markdown="1" class="tab-panel" data-panel="cond">
 <h3>Conditions — Decide</h3>
 <p><code>if / else</code> is how your code reacts to what's actually happening right now.</p>
 
@@ -164,7 +164,7 @@ else                   { continue(); }
 <p>In games: state changes, input handling, damage, win/lose logic, AI reactions.</p>
 </div>
 
-<div class="tab-panel" data-panel="nest">
+<div markdown="1" class="tab-panel" data-panel="nest">
 <h3>Nested Conditions — Refine</h3>
 <p>Putting one condition inside another lets you express layered logic — where the second check only matters if the first one passed.</p>
 
