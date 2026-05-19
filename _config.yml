@@ -19,7 +19,7 @@ description: "Class of 2026"
 owner_name: John Mortensen
 github_username: jm1021 
 github_repo: "portfolio" 
-baseurl: "/portfolio" 
+baseurl: ""
 future: true
 
 # Build settings
