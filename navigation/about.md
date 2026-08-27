@@ -9,6 +9,10 @@ comments: true
 
 I'm Indian America!
 
+var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
+    var living_in_the_world = [
+        {"house": "house.jpg", "greeting": "Indian flag", "description": "Flag 2"}
+
 <style>
     /* Style looks pretty compact, 
        - grid-container and grid-item are referenced the code 
@@ -54,9 +58,6 @@ I'm Indian America!
     var container = document.getElementById("grid_container"); // This container connects to the HTML div
 
     // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
-    var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
-    var living_in_the_world = [
-        {"house": "house.jpg", "greeting": "Indian flag", "description": "Flag 2"}
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
     var living_in_the_world = [
         {"house": "house.jpg", "greeting": "U.S flag", "description": "Flag 1"}
