@@ -57,6 +57,9 @@ I'm Indian America!
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
     var living_in_the_world = [
         {"house": "house.jpg", "greeting": "Indian flag", "description": "Flag 1"}
+        
+    var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
+    var living_in_the_world = [
         {"flag": "house2.jpg", "greeting": "American flag", "description": "Flag 2"}
         //{"house": "b/b9/Flag_of_Oregon.svg", "greeting": "Age 3-4", "description": "House 2"},
         //{"house": "b/be/Flag_of_England.svg", "greeting": "Age 4-6", "description": "House 3"},
@@ -120,7 +123,7 @@ For me, everything is all about family, sports and my hobbies.
 Gallery of Pics, scroll to the right for more ...
 </comment>
 <div class="image-gallery">
-  <img src="{{site.baseurl}}/images/about/hocket.jpg" alt="Image 1">
+  <img src="{{site.baseurl}}/images/about/hockey.jpg" alt="Image 1">
   <img src="{{site.baseurl}}/images/about/Tennis.jpg" alt="Image 2">
   <img src="{{site.baseurl}}/images/about/Dance.jpg" alt="Image 3">
  <img src="{{site.baseurl}}/images/about/1.jpg" alt="Image 4">
