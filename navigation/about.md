@@ -7,7 +7,7 @@ comments: true
 
 ## As a conversation Starter
 
-I'm Indian America!
+I'm Indian America! 
 
 <style>
     /* Style looks pretty compact, 
@@ -57,6 +57,7 @@ I'm Indian America!
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
     var living_in_the_world = [
         {"house": "house.jpg", "greeting": "Indian flag", "description": "Flag 1"}
+        {"flag": "house2.jpg", "greeting": "American flag", "description": "Flag 2"}
         //{"house": "b/b9/Flag_of_Oregon.svg", "greeting": "Age 3-4", "description": "House 2"},
         //{"house": "b/be/Flag_of_England.svg", "greeting": "Age 4-6", "description": "House 3"},
         //{"house": "e/ef/Flag_of_Hawaii.svg", "greeting": "Age 4-current(14)", "description": "House 4- current house!!!"},
@@ -119,7 +120,7 @@ For me, everything is all about family, sports and my hobbies.
 Gallery of Pics, scroll to the right for more ...
 </comment>
 <div class="image-gallery">
-  <img src="{{site.baseurl}}/images/about/house.jpg" alt="Image 1">
+  <img src="{{site.baseurl}}/images/about/hocket.jpg" alt="Image 1">
   <img src="{{site.baseurl}}/images/about/Tennis.jpg" alt="Image 2">
   <img src="{{site.baseurl}}/images/about/Dance.jpg" alt="Image 3">
  <img src="{{site.baseurl}}/images/about/1.jpg" alt="Image 4">
