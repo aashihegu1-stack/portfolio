@@ -7,7 +7,7 @@ comments: true
 
 ## As a conversation Starter
 
-I'm Indian America! 
+I'm Indian America!
 
 <style>
     /* Style looks pretty compact, 
@@ -35,7 +35,7 @@ I'm Indian America!
         flex-wrap: nowrap;
         overflow-x: auto;
         gap: 10px;
-        }
+    }
 
     .image-gallery img {
         max-height: 150px;
@@ -50,49 +50,26 @@ I'm Indian America!
 </div>
 
 <script>
-    // 1. Make a connection to the HTML container defined in the HTML div
-    var container = document.getElementById("grid_container"); // This container connects to the HTML div
+    var container = document.getElementById("grid_container");
 
-    // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
-    var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
     var living_in_the_world = [
-        {"house": "house.jpg", "greeting": "Indian flag", "description": "Flag 1"}
-        
-    var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
-    var living_in_the_world = [
-        {"flag": "house2.jpg", "greeting": "American flag", "description": "Flag 2"}
-        //{"house": "b/b9/Flag_of_Oregon.svg", "greeting": "Age 3-4", "description": "House 2"},
-        //{"house": "b/be/Flag_of_England.svg", "greeting": "Age 4-6", "description": "House 3"},
-        //{"house": "e/ef/Flag_of_Hawaii.svg", "greeting": "Age 4-current(14)", "description": "House 4- current house!!!"},
+        { "house": "house.jpg", "greeting": "Indian flag" },
+        { "house": "house2.jpg", "greeting": "American flag" }
     ];
 
-    // 3a. Consider how to update style count for size of container
-    // The grid-template-columns has been defined as dynamic with auto-fill and minmax
-
-    // 3b. Build grid items inside of our container for each row of data
     for (const location of living_in_the_world) {
-        // Create a "div" with "class grid-item" for each row
         var gridItem = document.createElement("div");
-        gridItem.className = "grid-item";  // This class name connects the gridItem to the CSS style elements
-        // Add "img" HTML tag for the flag
+        gridItem.className = "grid-item";
+
         var img = document.createElement("img");
-        img.src = "{{site.baseurl}}/images/about/" + location.house; // concatenate the source and flag
-        img.alt = location.house + " House"; // add alt text for accessibility
+        img.src = "{{site.baseurl}}/images/about/" + location.house;
+        img.alt = location.greeting;
 
-        // Add "p" HTML tag for the description
-        var description = document.createElement("p");
-        description.textContent = location.description; // extract the description
-
-        // Add "p" HTML tag for the greeting
         var greeting = document.createElement("p");
-        greeting.textContent = location.greeting;  // extract the greeting
+        greeting.textContent = location.greeting;
 
-        // Append img and p HTML tags to the grid item DIV
         gridItem.appendChild(img);
-        //gridItem.appendChild(description);
         gridItem.appendChild(greeting);
-
-        // Append the grid item DIV to the container DIV
         container.appendChild(gridItem);
     }
 </script>
@@ -126,14 +103,13 @@ Gallery of Pics, scroll to the right for more ...
   <img src="{{site.baseurl}}/images/about/hockey.jpg" alt="Image 1">
   <img src="{{site.baseurl}}/images/about/Tennis.jpg" alt="Image 2">
   <img src="{{site.baseurl}}/images/about/Dance.jpg" alt="Image 3">
- <img src="{{site.baseurl}}/images/about/1.jpg" alt="Image 4">
+  <img src="{{site.baseurl}}/images/about/1.jpg" alt="Image 4">
   <img src="{{site.baseurl}}/images/about/skating.jpg" alt="Image 5">
   <img src="{{site.baseurl}}/images/about/sci oly1.png" alt="Image 6">
   <img src="{{site.baseurl}}/images/about/2.jpg" alt="Image 7">
 </div>
 
 <div id="test">
-
 </div>
 
 ##### My Favourite food
@@ -151,8 +127,8 @@ Gallery of Pics, scroll to the right for more ...
     var living_in_the_world = [
         {"house": "https://upload.wikimedia.org/wikipedia/commons/4/48/Brooklyn_Pizza-cropped.png", "greeting": "Pizza", "description": "My Favourite pizza"},
         {"house": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Vegan_rhubarb-strawberry-blueberry_pie_with_caramel_oat_ice-cream_%283084610787%29.jpg", "greeting": "Icecream", "description": "icecream"},
-    {"house": "https://upload.wikimedia.org/wikipedia/commons/5/50/TORTEL-DOLS.jpg", "greeting": "Pasta", "description": "Pasta"},
-    {"house": "https://upload.wikimedia.org/wikipedia/commons/7/73/001_Tacos_de_carnitas%2C_carne_asada_y_al_pastor.jpg", "greeting": "Tacos", "description":"Tacos"}
+        {"house": "https://upload.wikimedia.org/wikipedia/commons/5/50/TORTEL-DOLS.jpg", "greeting": "Pasta", "description": "Pasta"},
+        {"house": "https://upload.wikimedia.org/wikipedia/commons/7/73/001_Tacos_de_carnitas%2C_carne_asada_y_al_pastor.jpg", "greeting": "Tacos", "description":"Tacos"}
     ];
 
     // 3a. Consider how to update style count for size of container
@@ -162,26 +138,20 @@ Gallery of Pics, scroll to the right for more ...
     for (const location of living_in_the_world) {
         // Create a "div" with "class grid-item" for each row
         var gridItem = document.createElement("div");
-        gridItem.className = "grid-item";  // This class name connects the gridItem to the CSS style elements
-        // Add "img" HTML tag for the flag
+        gridItem.className = "grid-item"; // This class name connects the gridItem to the CSS style elements
+
         var img = document.createElement("img");
-        img.src = location.house; // concatenate the source and flag
-        img.alt = location.house + " House"; // add alt text for accessibility
+        img.src = location.house;
+        img.alt = location.greeting;
 
-        // Add "p" HTML tag for the description
         var description = document.createElement("p");
-        description.textContent = location.description; // extract the description
+        description.textContent = location.description;
 
-        // Add "p" HTML tag for the greeting
         var greeting = document.createElement("p");
-        greeting.textContent = location.greeting;  // extract the greeting
+        greeting.textContent = location.greeting;
 
-        // Append img and p HTML tags to the grid item DIV
         gridItem.appendChild(img);
-        //gridItem.appendChild(description);
         gridItem.appendChild(greeting);
-
-        // Append the grid item DIV to the container DIV
         container.appendChild(gridItem);
     }
 </script>
