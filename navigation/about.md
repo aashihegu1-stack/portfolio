@@ -7,7 +7,7 @@ comments: true
 
 ## As a conversation Starter
 
-I'm Indian America!
+I'm Indian American!
 
 <style>
     /* Style looks pretty compact, 
