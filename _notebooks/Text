@@ -1,0 +1,13 @@
+/* override sticky/fixed lesson header */
+.topbar-lesson,
+.lesson-header,
+.header,
+.post-title,
+.post-meta,
+.topbar-left,
+.breadcrumbs,
+.lesson-player .topbar-lesson {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+}
