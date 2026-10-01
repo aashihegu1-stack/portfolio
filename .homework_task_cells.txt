@@ -1,0 +1,2011 @@
+=== _notebooks/Homework/2025-09-30-lists_scratchers_lesson.ipynb ===
+--- cell 1 ---
+## Big Idea 3.10: Lists
+
+![Shoreline Community Services logo]({{site.baseurl}}/images/capstone/shoreline.jpeg){: width="100" }
+
+**Theme: Shoreline Outreach.** Every list, count, and average in this unit uses real-style data from Shoreline Community Services' volunteer and donation programs.
+
+Shoreline Community Services supports unsheltered individuals and families in San Diego's Central Beach Area through volunteer-run outreach, donation drives, and direct aid. This lesson borrows its examples from that kind of work so the practice feels grounded in something real.
+
+Three short lessons, each with a 5 minute Popcorn Hack you do in class. One 10 minute Homework Hack at the end pulls all three together, graded as a single point.
+
+| Lesson | Topic | Popcorn Hack (5 min) |
+| ------ | ----- | -------------------- |
+| 1 | What lists are, creating, indexing | Four supply items, predict the output |
+| 2 | Sum and average | Live volunteer-hours accumulator |
+| 3 | Counting frequencies and filtering | Class donation-item survey |
+
+--- cell 15 ---
+# CODE_RUNNER: Lists Popcorn 1 - predict, run, fix the crash
+#Convert the above CollegeBoard Psuedocode into Python code and run it.
+#Predict the output of each print statement before running the code. Add your prediction as a comment next to each print statement.
+
+items_needed = ["blankets", "socks", "water", "meals"]
+
+--- cell 23 ---
+# CODE_RUNNER: Lists Popcorn 2
+#Now try it yourself! Write a for loop that calculates the sum of all the volunteer hours in the list and prints it out.
+#Calculate the average of the volunteer hours in the list using the value you calculated for the sum and the length of the list and print it out.
+
+volunteer_hours = [7, 6, 8, 5, 7, 9]
+
+--- cell 33 ---
+# CODE_RUNNER: Lists Popcorn 3 - count then filter
+
+items_requested = ["blankets", "socks", "meals", "socks", "water", "socks", "meals"]   # use real class data
+
+frequency = {}
+for item in items_requested:
+    if item in frequency:
+        frequency[item] += 1
+    else:
+        frequency[item] = 1
+
+
+# 1. Build a list of items with 2 or more votes
+# TODO: create an empty list called popular, loop over frequency,
+# and append any item whose count is 2 or more
+
+# 2. Print that list
+# TODO: print(popular)
+
+--- cell 34 ---
+**AP CSP Pseudocode (reference):**
+
+<pre class="pseudocode-reference"><code>items_requested ← ["blankets", "socks", "meals", "socks", "water", "socks", "meals"]
+
+frequency ← {}
+FOR EACH item IN items_requested
+{
+  IF (item IS IN frequency)
+  {
+    frequency[item] ← frequency[item] + 1
+  }
+  ELSE
+  {
+    frequency[item] ← 1
+  }
+}
+
+DISPLAY(frequency)
+
+// TODO: create an empty list called popular, loop over frequency,
+// and append any item whose count is 2 or more
+</code></pre>
+
+--- cell 37 ---
+# CODE_RUNNER: Lists Homework - indexing, accumulator, count and filter on one dataset
+
+donations_by_item = ["blankets", "socks", "blankets", "water", "socks", "blankets",
+                      "meals", "socks", "blankets", "water", "blankets", "socks"]
+
+costs = [2, 3, 2, 4, 3, 2, 1, 3, 2, 4, 2, 3]
+
+# LESSON 1 - indexing
+# 1. Print how many donations were made
+# 2. Print the last donation using indexing
+
+# LESSON 2 - sum and average
+# 3. Use a loop to total costs (do NOT use sum())
+# 4. Print "Total: <total>" and "Average: <average>" as integers using the int() function
+#ex: print(int(total)) would print the integer value of total
+
+# LESSON 3 - count and filter
+# 5. Build a frequency dictionary of donations_by_item and print it
+# 6. Build a list of items with 3 or more donations and print it
+
+--- cell 39 ---
+### Add This Lesson to Your Portfolio
+
+Once your homework is done, save it to your own portfolio.
+
+- [ ] Open your Portfolio repo (the one you publish with GitHub Pages).
+- [ ] In the `_notebooks` folder, create a new file named `YYYY-MM-DD-lists.ipynb`, using today's date.
+- [ ] Make the first cell a Raw cell and give it front matter:
+  ```
+  ---
+  layout: post
+  title: 3.10 Lists
+  permalink: /csp/big-idea-3/lists/
+  toc: true
+  comments: false
+  ---
+  ```
+- [ ] Add a markdown cell with a `## Lists` heading, then copy each completed Popcorn Hack and the Homework Hack into their own code cells.
+- [ ] Commit and push your changes: `git add .`, `git commit -m "Add Lists lesson"`, `git push`.
+- [ ] Confirm your page builds by visiting your portfolio site at the permalink above.
+
+=== _notebooks/Homework/2025-10-08-calling_procedures_remakers_lesson.ipynb ===
+--- cell 10 ---
+# CODE_RUNNER: Simple code example
+# Simple Procedure Example
+def report_incident(location, incident_type):
+    print("Incident reported in " + location + ": " + incident_type)
+
+# Calling the procedure with different arguments
+report_incident("Poway", "Medical Emergency")
+report_incident("Poway", "Power Outage")
+
+--- cell 12 ---
+# CODE_RUNNER: Complex Decomposition Example
+# Complex Decomposition Example
+# Helper Procedure
+def check_priority(incident_type):
+    return incident_type == "Medical Emergency"
+
+# Outer Procedure
+def process_incident(location, incident_type):
+    priority = check_priority(incident_type)
+    if priority:
+        print("PRIORITY RESPONSE: " + incident_type + " reported in " + location)
+    else:
+        print("INCIDENT RECORDED: " + incident_type + " reported in " + location)
+
+# Test calls
+process_incident("Poway", "Medical Emergency")
+process_incident("Poway", "Power Outage")
+
+
+--- cell 13 ---
+## 6. Popcorn and Homework Hacks
+
+--- cell 16 ---
+# CODE_RUNNER: Procedures Popcorn #1
+
+def report_status(location, status):
+    # TODO: Print a status update using both parameters
+    pass
+
+
+# TODO: Call report_status() two times
+# TODO: Use a different location or status for each call
+
+--- cell 18 ---
+# CODE_RUNNER: Pseudocode Template (COMPLETED EXAMPLE) of Popcorn Hack 2
+
+PROCEDURE is_priority(incident_type)
+{
+    RETURN (incident_type = "Medical Emergency")
+}
+
+PROCEDURE process_report(location, incident_type)
+{
+    priority ← is_priority(incident_type)
+    IF (priority)
+    {
+        DISPLAY("PRIORITY: " + incident_type + " reported in " + location)
+    }
+    ELSE
+    {
+        DISPLAY("STANDARD REPORT: " + incident_type + " reported in " + location)
+    }
+}
+
+process_report("Poway", "Medical Emergency")
+process_report("Poway", "Power Outage")
+
+
+--- cell 19 ---
+# CODE_RUNNER: Popcorn Hack 2 - Decomposition & Helper Procedures
+
+# Helper Procedure
+def is_priority(incident_type):
+    # TODO: Return True when the incident is a "Medical Emergency"
+    pass
+
+
+# Outer Procedure
+def process_report(location, incident_type):
+    # TODO: Call is_priority() using incident_type
+    # TODO: Store the returned value in a variable
+
+    # TODO: Use an if/else statement
+    # TODO: Print a priority message if priority is True
+    # TODO: Otherwise, print a standard report message
+    pass
+
+
+# TODO: Call process_report() two times
+# TODO: Test it with different incident types
+
+--- cell 20 ---
+### Homework Hack (10 minutes)
+
+#### Task
+In the same portfolio notebook, add a new code cell below your interactive tasks and create a simplified emergency-response program.
+
+Your program must contain:
+1. A helper procedure called `check_priority(incident_type)`.
+2. An outer procedure called `dispatch_response(location, incident_type)`.
+3. `dispatch_response()` must call `check_priority()`.
+4. `check_priority()` must return a Boolean value.
+5. `dispatch_response()` must print a different response depending on the returned value.
+6. Call `dispatch_response()` at least three times with different incident types.
+
+Use at least two different locations or incident types.
+
+--- cell 21 ---
+# Homework Hack
+def check_priority(incident_type):
+    # TODO: Return True when the incident requires priority handling
+    pass
+
+def dispatch_response(location, incident_type):
+    # TODO: Call check_priority()
+    # TODO: Store the returned value in a variable
+    # TODO: Use an if/else statement to print the appropriate response
+    pass
+
+# TODO: Call dispatch_response() at least three times
+
+=== _notebooks/Homework/2026-09-15-boolean_scratchers_py_hw.ipynb ===
+--- cell 4 ---
+---
+
+## 4. Lesson Plan
+
+**Learning Objective:** Write and evaluate Boolean expressions that compare values and combine multiple backend requirements.
+
+**Success Criteria:** You can predict whether an expression is `True` or `False`, explain why, choose the correct relational/logical operator, and test a compound rule with more than one input.
+
+### Lesson Theme — SFI Safety Tech Inspector
+
+**Theme:** You are building validation logic for an SFI automotive safety-spec backend.
+
+Every example uses the same story instead of switching contexts:
+
+- **Product:** an automotive safety component such as a flywheel or clutch assembly.
+- **Category:** a racing category such as Auto Racing or Drag Racing.
+- **Spec number:** the identifier that must be present and unique.
+- **Effective date:** required metadata for an approved record.
+- **Backend decision:** accept, reject, return, or filter a record.
+
+The theme matters because Boolean expressions become easier to reason about when every condition answers a real backend question:
+
+> “Does this record satisfy every rule required before it is accepted?”
+
+As the lesson progresses, students move from checking one field to validating an entire candidate record.
+
+### Teaching rhythm
+
+Pause for each **Popcorn Hack during the lesson**: give students about two minutes to predict, edit and run the nearby code, then ask a partner to explain the result before continuing. Students copy their work and visible output into their own notebook after the live check. Save the independent Homework Hack for after class.
+
+### Tech Talk (short segments between checks)
+
+A **Boolean expression** is a question whose result is only `True` or `False`.
+
+Python comparison operators:
+
+| Python | Meaning | SFI example |
+| --- | --- | --- |
+| `==` | equal to | `spec_number == "1.1"` |
+| `!=` | not equal to | `category != "Street Car"` |
+| `>` | greater than | `part_count > 0` |
+| `<` | less than | `part_count < 100` |
+| `>=` | greater than or equal to | `part_count >= 1` |
+| `<=` | less than or equal to | `part_count <= 100` |
+
+Logical operators combine Boolean values:
+
+| Operator | Meaning | Example |
+| --- | --- | --- |
+| `and` | both conditions must be true | name exists **and** spec exists |
+| `or` | at least one condition is true | Auto Racing **or** Drag Racing |
+| `not` | reverses a Boolean value | **not** a duplicate |
+
+Remember: `=` assigns a value in Python, while `==` compares values.
+
+
+--- cell 6 ---
+# CODE_RUNNER: Tech Talk 1 - Compare SFI Part Data
+
+spec_number = "1.1"
+category = "Auto Racing"
+part_count = 12
+
+print("Spec is 1.1:", spec_number == "1.1")
+print("Category is not Street Car:", category != "Street Car")
+print("At least one part record exists:", part_count >= 1)
+
+--- cell 8 ---
+# CODE_RUNNER: Popcorn Hack 1 - Check SFI Part Fields
+
+part = {
+    "product_name": "Replacement Flywheels and Clutch Assemblies",
+    "category": "Auto Racing",
+    "spec_number": "1.1",
+    "effective_date": "Nov. 9, 2001"
+}
+
+valid_categories = ["Auto Racing", "Drag Racing"]
+
+# Build and test your solution below.
+
+--- cell 10 ---
+# CODE_RUNNER: Tech Talk 2 - Combine SFI Backend Checks
+
+has_product_name = True
+has_spec_number = True
+duplicate_spec = False
+
+print("Required fields present:", has_product_name and has_spec_number)
+print("At least one field present:", has_product_name or has_spec_number)
+print("Spec is new:", not duplicate_spec)
+
+--- cell 12 ---
+# CODE_RUNNER: Popcorn Hack 2 - Backend Create Rule
+
+part = {
+    "product_name": "Replacement Flywheels and Clutch Assemblies",
+    "category": "Auto Racing",
+    "spec_number": "1.1",
+    "effective_date": "Nov. 9, 2001"
+}
+
+valid_categories = ["Auto Racing", "Drag Racing"]
+existing_spec_numbers = ["1.1", "2.1"]
+
+# Build and test your solution below.
+
+--- cell 14 ---
+# CODE_RUNNER: Tech Talk 3 - SFI Record Validation
+
+has_product_name = True
+has_spec_number = True
+valid_category = True
+duplicate_spec = False
+
+basic_record_is_valid = (
+    has_product_name
+    and has_spec_number
+    and valid_category
+    and not duplicate_spec
+)
+
+print("Basic SFI record is valid:", basic_record_is_valid)
+
+--- cell 16 ---
+# CODE_RUNNER: Tech Talk 4 - SFI Backend Decision
+
+part_in_database = True
+record_archived = False
+
+can_return_record = part_in_database and not record_archived
+
+if can_return_record:
+    print("Return the SFI part record")
+else:
+    print("Do not return the SFI part record")
+
+--- cell 18 ---
+# CODE_RUNNER: Popcorn Hack 3 - SFI Search Filter
+
+query = "1.2"
+
+records = [
+    {
+        "product_name": "Replacement Flywheels and Clutch Assemblies",
+        "category": "Auto Racing",
+        "spec_number": "1.1"
+    },
+    {
+        "product_name": "Multiple Disc Clutch Assemblies",
+        "category": "Drag Racing",
+        "spec_number": "1.2"
+    },
+    {
+        "product_name": "Racing Flywheel Record",
+        "category": "Auto Racing",
+        "spec_number": "2.1"
+    }
+]
+
+valid_categories = ["Auto Racing", "Drag Racing"]
+
+# Build and test your solution below.
+
+--- cell 21 ---
+---
+
+## 6. Independent Homework & Submission
+
+The three Popcorn Hacks above are live understanding checks. **You** are responsible for copying or preparing their code, predictions, and visible output in your personal notebook; the lesson page does not collect that work for you. Do the Homework Hack independently after the lesson.
+
+### Prepare your submission IPYNB
+
+1. In your portfolio, create a separate notebook under `_notebooks/homework` for this lesson. Keep the roughly four lesson notebooks expected for submission ready and individually identifiable; this lesson accounts for one notebook.
+2. Put this **submission notebook** frontmatter in a raw cell at the very top. It differs from the lesson page frontmatter above. Replace `yourGithubID` with your own ID:
+
+```raw
+---
+layout: post
+codemirror: true
+title: 3.05 Boolean Expressions HW
+categories: [Python]
+lesson_language: Python
+lesson_topic: Boolean-Expressions HW
+lesson_part: interactive
+lesson_type: lesson
+permalink: /python/boolean-hw
+author: yourGithubID
+---
+```
+
+3. Add your three in-class Popcorn Hacks with predictions and output, the MCQ result, then your independent Homework Hack and test output. Use headings to separate them. Run the notebook and publish your portfolio page.
+4. Submit the runnable **Homework Hack Python code** in the Code Submission form below. Put the published notebook link, your MCQ result, and brief test evidence in the Notes field. Do not paste a notebook file or Markdown fences into the code field.
+
+Suggested Notes:
+
+```text
+Lesson: CSP 3.05 Boolean Expressions
+Notebook: <published URL>
+MCQ 3.05: <paste result line>
+Popcorn Hacks 1–3 completed during class and copied to notebook: yes
+Homework tested: <cases or runs and observed output>
+```
+
+Keep the Homework Hack self-contained so the submitted code runs without the earlier lesson cells. The homework below is a written prompt and starter code to transfer into your notebook; work through it independently.
+
+
+--- cell 22 ---
+### Homework Hack (independent): SFI Backend Validator
+
+Build a reusable validator for candidate SFI automotive records.
+
+A valid record has:
+- a non-empty product name,
+- an accepted racing category,
+- a non-empty spec number,
+- an effective date,
+- and a spec number that does **not** already exist in the backend.
+
+The provided test data includes different cases. Your completed runner should clearly print whether each candidate record is accepted or rejected.
+
+Copy this starter into your **personal submission notebook** after class. Complete it there, run multiple tests, and include the output. This is a reference block, not an in-page runner:
+
+--- cell 23 ---
+```python
+# Homework Hack - SFI Backend Validator
+
+existing_spec_numbers = ["1.1", "2.1"]
+valid_categories = ["Auto Racing", "Drag Racing"]
+
+test_records = [
+    {
+        "product_name": "Multiple Disc Clutch Assemblies",
+        "category": "Auto Racing",
+        "spec_number": "1.2",
+        "effective_date": "Feb. 9, 2006"
+    },
+    {
+        "product_name": "Replacement Flywheels",
+        "category": "Street Car",
+        "spec_number": "3.1",
+        "effective_date": "Jan. 1, 2026"
+    },
+    {
+        "product_name": "Existing Flywheel Record",
+        "category": "Drag Racing",
+        "spec_number": "1.1",
+        "effective_date": "Jan. 1, 2026"
+    }
+]
+
+# Build and test your validator below.
+```
+
+--- cell 24 ---
+### Grading Plan (1 Point Total)
+
+| Part | Points | What earns the points |
+| --- | ---: | --- |
+| Popcorn Hack 1 | 0.10 | Correct field/category Boolean checks with visible output. |
+| Popcorn Hack 2 | 0.15 | Correct create decision using required fields and duplicate handling. |
+| Popcorn Hack 3 | 0.20 | Search logic correctly combines query matching and accepted-category filtering. |
+| MCQ | 0.15 | All questions attempted and result line included; full credit for 4/4. |
+| Homework Validator | 0.40 | Reusable validator correctly accepts/rejects the supplied cases and explains the Boolean logic. |
+| **Total** | **1.0** | |
+
+### Quick Validation Checklist
+
+- Each in-class Popcorn Hack was tested and transferred to the personal notebook with visible output.
+- At least one valid and one invalid case were tested.
+- Duplicate-spec behavior is tested.
+- `and`, `or`, and `not` match the written requirement.
+- MCQ result line and the published personal notebook link are ready for the Notes field.
+- Section 3 College Board pseudocode has been reviewed and compared with the Python solution.
+- Publish your notebook with submission frontmatter; submit the **final Homework Hack Python code** through the Code Submission form below.
+
+=== _notebooks/Homework/2026-09-15-random_py_sprinters.ipynb ===
+--- cell 4 ---
+---
+
+## 4. Lesson Plan
+
+**Learning Objective:** Generate random values in Python, determine every possible result, and apply randomness to backend-style testing.
+
+**Success Criteria:** You can choose a valid random range, explain whether endpoints are included, distinguish random choice from guaranteed rotation, and use random results safely in program logic.
+
+### Lesson Theme — SFI Backend QA Test Garage
+
+**Theme:** You are a QA engineer stress-testing an SFI automotive safety-spec backend.
+
+The lesson keeps one story from start to finish:
+
+- **Records:** SFI automotive components.
+- **Random record selection:** chooses which part gets tested.
+- **Random API action:** chooses search, create, update, or remove behavior.
+- **Existing spec numbers:** create realistic duplicate conditions.
+- **Repeated runs:** exercise different backend paths.
+
+Randomness is not added just for entertainment. It represents a real testing strategy:
+
+> “Can the backend handle many valid combinations of records and actions without producing an invalid state?”
+
+The final simulator combines the full theme into repeated QA runs.
+
+### Teaching rhythm
+
+Pause for each **Popcorn Hack during the lesson**: give students about two minutes to predict, edit and run the nearby code, then ask a partner to explain the result before continuing. Students copy their work and visible output into their own notebook after the live check. Save the independent Homework Hack for after class.
+
+### Tech Talk (short segments between checks)
+
+Python's `random` module provides several ways to generate random behavior:
+
+| Python | Purpose | Example |
+| --- | --- | --- |
+| `random.randint(a, b)` | Random integer from `a` through `b`, inclusive | `random.randint(1, 4)` |
+| `random.choice(items)` | Random item from a sequence | `random.choice(parts)` |
+| repeated calls | Independent random selections | the same result may repeat |
+
+A random result is **not** the same as cycling through all values. Repeats are normal.
+
+
+--- cell 6 ---
+# CODE_RUNNER: Tech Talk 1 - Random SFI Record ID
+
+import random
+
+sfi_record_id = random.randint(1, 4)
+print("SFI record selected for QA:", sfi_record_id)
+
+--- cell 8 ---
+# CODE_RUNNER: Popcorn Hack 1 - Random SFI Record Number
+
+import random
+
+record_count = 4
+
+# Build and test your solution below.
+
+--- cell 10 ---
+# CODE_RUNNER: Tech Talk 2 - Random SFI Part
+
+import random
+
+sfi_parts = [
+    "Replacement Flywheels and Clutch Assemblies",
+    "Multiple Disc Clutch Assemblies",
+    "Racing Flywheel Record"
+]
+
+selected_part = random.choice(sfi_parts)
+print("SFI part selected for testing:", selected_part)
+
+--- cell 12 ---
+# CODE_RUNNER: Popcorn Hack 2 - Random SFI Part Record
+
+import random
+
+parts = [
+    {
+        "product_name": "Replacement Flywheels and Clutch Assemblies",
+        "category": "Auto Racing",
+        "spec_number": "1.1"
+    },
+    {
+        "product_name": "Multiple Disc Clutch Assemblies",
+        "category": "Drag Racing",
+        "spec_number": "1.2"
+    },
+    {
+        "product_name": "Racing Flywheel Record",
+        "category": "Auto Racing",
+        "spec_number": "2.1"
+    }
+]
+
+# Build and test your solution below.
+
+--- cell 14 ---
+# CODE_RUNNER: Tech Talk 3 - Random SFI Backend Action
+
+import random
+
+actions = ["GET/search", "POST/create"]
+
+selected_action = random.choice(actions)
+
+if selected_action == "GET/search":
+    print("QA test: search for an SFI part record")
+else:
+    print("QA test: validate an SFI part before creating it")
+
+--- cell 16 ---
+# CODE_RUNNER: Popcorn Hack 3 - Random SFI API Test
+
+import random
+
+parts = [
+    {"product_name": "Replacement Flywheels", "spec_number": "1.1"},
+    {"product_name": "Multiple Disc Clutch Assemblies", "spec_number": "1.2"},
+    {"product_name": "Racing Flywheel Record", "spec_number": "2.1"}
+]
+
+actions = [
+    "GET/search",
+    "POST/create",
+    "PUT/update"
+]
+
+# Build and test your solution below.
+
+--- cell 19 ---
+---
+
+## 6. Independent Homework & Submission
+
+The three Popcorn Hacks above are live understanding checks. **You** are responsible for copying or preparing their code, predictions, and visible output in your personal notebook; the lesson page does not collect that work for you. Do the Homework Hack independently after the lesson.
+
+### Prepare your submission IPYNB
+
+1. In your portfolio, create a separate notebook under `_notebooks/homework` for this lesson. Keep the roughly four lesson notebooks expected for submission ready and individually identifiable; this lesson accounts for one notebook.
+2. Put this **submission notebook** frontmatter in a raw cell at the very top. It differs from the lesson page frontmatter above. Replace `yourGithubID` with your own ID:
+
+```raw
+---
+layout: post
+codemirror: true
+title: 3.15 Random Values HW
+categories: [Python]
+lesson_language: Python
+lesson_topic: Random-Values HW
+lesson_part: interactive
+lesson_type: lesson
+permalink: /python/random-hw
+author: yourGithubID
+---
+```
+
+3. Add your three in-class Popcorn Hacks with predictions and output, the MCQ result, then your independent Homework Hack and test output. Use headings to separate them. Run the notebook and publish your portfolio page.
+4. Submit the runnable **Homework Hack Python code** in the Code Submission form below. Put the published notebook link, your MCQ result, and brief test evidence in the Notes field. Do not paste a notebook file or Markdown fences into the code field.
+
+Suggested Notes:
+
+```text
+Lesson: CSP 3.15 Random Values
+Notebook: <published URL>
+MCQ 3.15: <paste result line>
+Popcorn Hacks 1–3 completed during class and copied to notebook: yes
+Homework tested: <cases or runs and observed output>
+```
+
+Keep the Homework Hack self-contained so the submitted code runs without the earlier lesson cells. The homework below is a written prompt and starter code to transfer into your notebook; work through it independently.
+
+
+--- cell 20 ---
+### Homework Hack (independent): SFI Backend QA Simulator
+
+Build a reusable randomized QA simulator for the SFI automotive backend.
+
+The simulator should work with:
+- structured SFI part records,
+- multiple backend actions,
+- existing spec numbers,
+- repeated test runs,
+- and duplicate-spec handling during creation.
+
+The final runner should clearly show which record and action were selected and what backend-style result occurred.
+
+Copy this starter into your **personal submission notebook** after class. Complete it there, run multiple tests, and include the output. This is a reference block, not an in-page runner:
+
+--- cell 21 ---
+```python
+# Homework Hack - SFI Backend QA Simulator
+
+import random
+
+parts = [
+    {
+        "product_name": "Replacement Flywheels",
+        "category": "Auto Racing",
+        "spec_number": "1.1"
+    },
+    {
+        "product_name": "Multiple Disc Clutch Assemblies",
+        "category": "Drag Racing",
+        "spec_number": "1.2"
+    },
+    {
+        "product_name": "Racing Flywheel Record",
+        "category": "Auto Racing",
+        "spec_number": "2.1"
+    }
+]
+
+actions = [
+    "GET/search",
+    "POST/create",
+    "PUT/update",
+    "DELETE/remove"
+]
+
+existing_spec_numbers = ["1.1", "2.1"]
+test_count = 5
+
+# Build and test your QA simulator below.
+```
+
+--- cell 22 ---
+### Grading Plan (1 Point Total)
+
+| Part | Points | What earns the points |
+| --- | ---: | --- |
+| Popcorn Hack 1 | 0.10 | Valid random record IDs with correct explanation of the possible range/repeats. |
+| Popcorn Hack 2 | 0.15 | Random selection of a complete structured SFI record with correct displayed fields. |
+| Popcorn Hack 3 | 0.20 | Random part/action selection with correct action-dependent behavior. |
+| MCQ | 0.15 | All questions attempted and result line included; full credit for 4/4. |
+| Homework Simulator | 0.40 | Reusable multi-run QA simulator handles API actions and duplicate-spec behavior correctly. |
+| **Total** | **1.0** | |
+
+### Quick Validation Checklist
+
+- Every generated record ID/index is valid.
+- Repeated random values are treated as normal behavior.
+- Structured records remain intact when selected.
+- Multiple API actions are exercised in the final simulator.
+- The complete possible output/range is explained.
+- MCQ result line and the published personal notebook link are ready for the Notes field.
+- Section 3 College Board pseudocode has been reviewed and compared with the Python solution.
+- Publish your notebook with submission frontmatter; submit the **final Homework Hack Python code** through the Code Submission form below.
+
+=== _notebooks/Homework/2026-09-15-strings_intercepters.ipynb ===
+--- cell 7 ---
+# CODE_RUNNER: Demo - Create strings with different quote styles
+
+single = 'Auto Racing'
+double = "Auto Racing"
+multiline = """SPEC 1.1
+FLYWHEEL"""
+
+print(single == double)   # True -> the quote style you pick doesn't change the value
+print(type(single))       # <class 'str'> -> both quote styles make the same type
+print(len(single))        # ordered sequence -> it has a length, character by character
+print(multiline)          # triple quotes preserve the line break inside the string
+
+--- cell 9 ---
+# CODE_RUNNER: Demo - Try to edit a string in place and watch it fail
+
+message = "HELLO"
+message[0] = "J"   # TypeError: 'str' object does not support item assignment
+
+--- cell 11 ---
+# CODE_RUNNER: Demo - Build a new string instead of editing in place
+
+message = "HELLO"
+fixed = "J" + message[1:]   # slice off the "H", then glue "J" onto the front
+print(fixed)
+
+--- cell 12 ---
+---
+
+## 6. Hacks & Practice Tasks
+
+You are a signal interceptor. Every transmission that crosses your desk is just a Python string. Across the three cycles below you'll use the skills from the Reference Guide to read, clean, search, and rebuild intercepted text — then combine all three skills to crack one final transmission for homework.
+
+### Prepare your submission IPYNB
+
+Complete this quick-start flow so you can begin in about 2 minutes.
+
+1. Create a new notebook in your portfolio homework area: `_notebooks/homework`.
+2. Add one raw cell at the top with the frontmatter below.
+3. Add a code cell for each Popcorn Hack and the Homework. Keep the `# CODE_RUNNER:` comment as the first line of each code cell.
+4. Run each cell and check the output before submitting.
+
+~~~raw
+---
+layout: post
+title: 3.4 Strings HW
+categories: [Python]
+lesson_language: Python
+lesson_topic: Strings HW
+lesson_part: interactive
+lesson_type: lesson
+permalink: /python/strings-intercepters-hw
+author: githubID
+---
+~~~
+
+### Submission Safety Rules (Read First)
+
+> [!IMPORTANT]
+> To avoid grading errors, follow these rules exactly:
+>
+> * Keep the `# CODE_RUNNER:` comment as the first line of each submission cell.
+> * Your code must run in the code runner with no errors.
+> * This lesson needs **no imports at all** — indexing, slicing, and every string method used here are built into the `str` type.
+> * Do not use `input()`. The code runner cannot type answers for you.
+
+--- cell 14 ---
+# CODE_RUNNER: Demo - Index and slice an SFI record string
+
+record = "RACING-SPEC-1.1"
+
+print(record[0])       # 'R'  -> first character, index 0
+print(record[-1])      # '1'  -> last character, index -1
+print(record[7:11])    # 'SPEC' -> characters 7 up to (not including) 11
+print(record[::2])     # every OTHER character, start to end
+print(record[::-1])    # the whole string, reversed
+print(len(record))     # 15  -> total number of characters
+
+--- cell 18 ---
+# CODE_RUNNER: Popcorn Hack 1 - Extract the hidden message using indexing and slicing
+
+transmission = "xxSIGNALxxxCONFIRMEDxx77xxDELTA"
+
+# TODO 1: Use slicing to pull out "SIGNAL" (it starts at index 2 and is 6 characters long)
+word_1 = ""
+print("Word 1:", word_1)
+
+# TODO 2: Use slicing to pull out "CONFIRMED" (it starts right after "SIGNALxxx")
+word_2 = ""
+print("Word 2:", word_2)
+
+# TODO 3: Use NEGATIVE indexing/slicing to pull out "DELTA" (it is the last 5 characters)
+word_3 = ""
+print("Word 3:", word_3)
+
+# TODO 4: Use len() to print how many characters are in the FULL transmission
+print("Total length:", 0)
+
+# TODO 5: Use a slice with a step of 2 (transmission[::2]) to print every other character.
+#         Look closely: is any part of the hidden message still visible in this pattern?
+print("Every other character:", "")
+
+--- cell 20 ---
+# CODE_RUNNER: Demo - Clean and search a string with methods
+
+raw = "   SFI-BACKEND says: the SPEC is DUPLICATE!!!  "
+
+clean = raw.strip()                     # removes leading/trailing whitespace
+print(clean)
+
+print(clean.lower())                    # a lowercase COPY
+print(clean.replace("!", ""))           # a copy with "!" removed
+print(clean.split(":"))                 # splits into a LIST of pieces on ":"
+print("duplicate" in clean.lower())     # case-insensitive search with `in`
+print(clean.find("SPEC"))               # index where "SPEC" starts, or -1 if missing
+print(clean.count("S"))                 # how many times "S" appears
+
+--- cell 23 ---
+# CODE_RUNNER: Demo - Split real-world separators (CSV and Markdown table)
+
+csv_line = "Auto Racing,1.1,Replacement Flywheels,2001-11-09"
+fields = csv_line.split(",")                                   # comma -> CSV
+print(fields)
+
+table_row = "Auto Racing | 1.1 | Replacement Flywheels | 2001-11-09"
+columns = [piece.strip() for piece in table_row.split("|")]    # pipe -> Markdown table
+print(columns)
+
+--- cell 25 ---
+# CODE_RUNNER: Popcorn Hack 2 - Clean and search a noisy transmission using string methods
+
+noisy = "   ...AGENT>>>Falcon---reports: the PACKAGE has ARRIVED!!!   "
+
+# TODO 1: Use .strip() to remove the leading/trailing whitespace. Save it as trimmed.
+trimmed = noisy
+print("Trimmed:", repr(trimmed))
+
+# TODO 2: Use .replace() (you may need it more than once) to remove every ">", "-", and "!" character.
+#         Save the result as cleaned.
+cleaned = trimmed
+print("Cleaned:", cleaned)
+
+# TODO 3: Use .lower() to make an all-lowercase COPY of cleaned. Save it as lowered.
+lowered = cleaned
+print("Lowered:", lowered)
+
+# TODO 4: Use the `in` operator on lowered to check whether "arrived" appears anywhere in the message.
+has_arrived = False
+print("Contains 'arrived':", has_arrived)
+
+# TODO 5: Use .split() with no arguments on cleaned to break it into a list of words.
+#         Save it as words, then print how many words there are with len().
+words = []
+print("Word count:", len(words))
+
+--- cell 27 ---
+# CODE_RUNNER: Demo - Concatenation, str(), f-strings, and join
+
+part = "Flywheel Assembly"
+status = "validated"
+count = 3
+
+report = part + " status: " + status                        # + only works string-to-string
+report_with_number = part + " matched " + str(count) + " specs"   # str() converts the int first
+print(report)
+print(report_with_number)
+
+# f-strings are the cleanest way to mix types - no manual + or str() needed
+report_f = f"{part} status: {status} ({count} specs matched)"
+print(report_f)
+
+spec_numbers = ["1.1", "1.2", "2.1"]
+print("-".join(spec_numbers))     # glues a LIST into ONE string, with "-" between pieces
+
+--- cell 31 ---
+# CODE_RUNNER: Demo - Build a JSON-style line that mixes separators
+
+import json
+
+part = "Flywheel Assembly"
+confidence = 87
+spec_numbers = ["1.1", "1.2", "2.1"]
+duplicate = True
+
+joined_specs = "-".join(spec_numbers)      # turn the list into one dash-joined string first
+json_line = json.dumps({
+    "part": part,
+    "confidence": confidence,
+    "specs": joined_specs,
+    "duplicate": duplicate,
+})
+print(json_line)
+
+--- cell 33 ---
+# CODE_RUNNER: Popcorn Hack 3 - Build a decoded report using concatenation and formatting
+
+agent_name = "Falcon"
+target_word = "MIDNIGHT"
+confidence = 87          # a percentage, stored as an int
+fragments = ["ALPHA", "SEVEN", "DELTA"]
+
+# TODO 1: Use + concatenation to build: "Agent Falcon intercepted: MIDNIGHT"
+headline = ""
+print(headline)
+
+# TODO 2: confidence is an int. Use str() and + concatenation to build: "Confidence: 87%"
+confidence_line = ""
+print(confidence_line)
+
+# TODO 3: Rewrite the SAME line as confidence_line_fstring, but using an f-string this time
+confidence_line_fstring = ""
+print(confidence_line_fstring)
+
+# TODO 4: Use "-".join(fragments) to combine the fragments list into one string
+joined_fragments = ""
+print("Joined fragments:", joined_fragments)
+
+# TODO 5: Use an f-string to build ONE final report line combining headline, confidence_line,
+#         and joined_fragments, in the form:
+#         "REPORT: <headline> | <confidence_line> | Fragments: <joined_fragments>"
+final_report = ""
+print(final_report)
+
+--- cell 34 ---
+### Homework Hack: Crack the Final Transmission
+
+**Task:** One transmission is left, and it needs **all three skills** — indexing/slicing, string methods, and formatting — to fully decode. This time the transmission arrives the way real systems actually send data: as a **comma-separated (CSV-style) row**. Your finished program must:
+
+1. **Clean and split it.** Use `.strip()` to remove outer whitespace, then `.split(",")` to break the CSV row into fields — the same technique spreadsheets and data exports use.
+2. **Extract by index.** Use indexing on the resulting list to pull out the date, the agent codename, the raw message code, and the confidence score.
+3. **Slice-check the date.** Use slicing (not a method) to confirm the date field starts with the year `"2026"`.
+4. **Clean and search the message.** Use `.replace()` to turn the dashes in the message code into spaces, then use `.lower()` and the `in` operator to check whether the word `"dawn"` appears anywhere in it.
+5. **Rebuild it as a Markdown table row.** Use an f-string with `|` separators to turn the decoded fields into one Markdown table row: `| <date> | <agent> | <message> | <confidence>% |`.
+6. **Rebuild it as a JSON line.** Use an f-string to build a JSON-style line for the same data — mixing `{ }`, `:`, and `,` the way real systems pass structured data between programs. Remember: JSON booleans are lowercase (`true`/`false`), not Python's `True`/`False`.
+
+--- cell 35 ---
+# CODE_RUNNER: Homework - Crack the Final Transmission using slicing, methods, and formatting
+
+raw_transmission = "  2026-09-15,GHOST,THE-EAGLE-LANDS-AT-DAWN,87  "
+
+# TODO 1: Use .strip() to remove the outer whitespace, then .split(",") to break it into fields.
+#         Print segments. Since this is a real CSV row (no leading/trailing marker), there
+#         should be exactly 4 fields and no stray empty strings.
+segments = []
+print("Segments:", segments)
+
+# TODO 2: Use indexing on segments to pull out the date, agent, message code, and confidence.
+date = ""
+agent = ""
+message_code = ""
+confidence_str = ""
+print("Date:", date, "| Agent:", agent, "| Message code:", message_code, "| Confidence:", confidence_str)
+
+# TODO 3: Use SLICING (not a method) on date to confirm it starts with the year "2026".
+year_check = ""
+print("Year check:", year_check)
+
+# TODO 4: Use .replace() to turn the dashes in message_code into spaces. Save it as message.
+message = message_code
+
+# TODO 5: Use .lower() and the `in` operator to check whether "dawn" appears anywhere in message.
+found_dawn = False
+print("Found 'dawn':", found_dawn)
+
+# TODO 6: Use an f-string with "|" separators to build a Markdown table row of the decoded fields,
+#         in the form:
+#         "| <date> | <agent> | <message> | <confidence_str>% |"
+markdown_row = ""
+print("Markdown row:", markdown_row)
+
+# TODO 7: Use an f-string to build a JSON-style line for the same fields, mixing "{", "}", ":", and ","
+#         the way real systems pass structured data. Use str(found_dawn).lower() for the boolean, since
+#         JSON uses lowercase true/false instead of Python's True/False. Form:
+#         {"date": "<date>", "agent": "<agent>", "message": "<message>", "confidence": <confidence_str>, "contains_dawn": <found_dawn lowercase>}
+json_line = ""
+print("JSON line:", json_line)
+
+--- cell 36 ---
+---
+
+## 7. Grading Plan (1 Point Total)
+
+### Classroom Rubric
+
+| Activity | Points | What earns the points |
+| --- | ---: | --- |
+| Popcorn Hacks (all 3) | 0.3 (0.1 each) | Student completed all TODOs in each Popcorn Hack and the cell runs without errors. |
+| Homework — splitting | 0.15 | Correctly strips and splits the CSV transmission into fields on `,` — a real-world separator, not a made-up marker. |
+| Homework — indexing | 0.15 | Correctly extracts the date, agent, message code, and confidence by index. |
+| Homework — slicing | 0.1 | Correctly slices the date to confirm the year, without using a string method. |
+| Homework — methods | 0.15 | Correctly replaces dashes with spaces and performs a case-insensitive search for "dawn". |
+| Homework — formatting | 0.15 | Builds a correct Markdown table row (pipe-separated) AND a JSON-style line (mixing `{ }`, `:`, and `,`) from the decoded fields. |
+| **Total** | **1.0** | |
+
+### Quick Validation Checklist
+
+* Present: `# CODE_RUNNER:` comment as the first line of each cell.
+* Present: at least one slicing expression that does NOT use a string method.
+* Present: at least three different string methods (for example `.strip()`, `.split()`, `.replace()`, `.lower()`).
+* Present: a Markdown-style table row (pipe-separated) and a JSON-style line (comma/colon/brace-separated) built from the decoded fields.
+* Absent: `input()`, any `import` statement, and errors when run.
+
+=== _notebooks/Homework/2026-09-16-libraries_python.ipynb ===
+--- cell 7 ---
+# CODE_RUNNER: Run it, then change the rehearsal range to 1-12 and predict the new output
+
+import math
+import random
+
+# Read the API before calling a procedure
+print("random.randint:", random.randint.__doc__)
+print("math.ceil:", math.ceil.__doc__)
+print()
+
+rehearsal_scores = [8, 7, 10, 9, 8]
+
+# random.choice picks one rehearsal to review
+print("Rehearsal to review:", random.choice(rehearsal_scores), "out of 10")
+
+# random.randint(a, b) returns a whole number from a to b, including both
+studio_number = random.randint(1, 9)
+print("Random studio number:", studio_number)
+
+# math.sqrt returns the square root, so a 144 square foot practice space is this wide
+side = math.sqrt(144)
+print("Square practice space side:", side, "feet")
+
+# math.ceil rounds up to the next whole number
+average = sum(rehearsal_scores) / len(rehearsal_scores)
+rounded_up = math.ceil(average)
+print("Rehearsal average:", average, "-> rounded up:", rounded_up)
+
+--- cell 10 ---
+# CODE_RUNNER: Run it, then change the dancers and add a route of your own, such as /choreographer
+
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+# A route is a procedure with a web address attached to it
+@app.route("/score")
+def score():
+    return jsonify({"routine": "Midnight Train", "energy": 9, "count": 8})
+
+@app.route("/roster")
+def roster():
+    return jsonify({"dancers": ["Maya", "Jordan", "Sofia"]})
+
+@app.route("/next-rehearsal")
+def next_rehearsal():
+    return jsonify({"studio": "B", "time": "4:30 PM", "focus": "clean the ending"})
+
+# test_client visits the addresses without needing a browser
+client = app.test_client()
+
+print("/score says:", client.get("/score").get_json())
+print("/roster says:", client.get("/roster").get_json())
+print("/next-rehearsal says:", client.get("/next-rehearsal").get_json())
+
+--- cell 14 ---
+# CODE_RUNNER: Run it, then change the dancer nickname to "M" and fix the line that breaks
+
+import math                    # import the whole library
+from random import randint     # import one procedure out of a library
+import statistics as stats     # import the library under a shorter nickname
+
+# The whole library was imported, so the math. prefix is required
+print("Studio circle distance:", round(2 * math.pi * 3, 2), "feet")
+
+# randint was imported by name, so it is called with no prefix
+print("Warm-up playlist number:", randint(1, 12))
+
+# stats is a nickname that stands in for statistics
+print("Rehearsal average:", stats.mean([8, 7, 10]))
+
+--- cell 15 ---
+---
+
+## 5. Hacks & Practice Tasks
+
+### Prepare your submission IPYNB
+
+Complete this quick-start flow so you can begin in about 2 minutes.
+
+1. Create a new notebook in your portfolio homework area: `_notebooks/homework`.
+2. Add one raw cell at the top with the frontmatter below.
+3. Add a code cell for each Popcorn Hack and the Homework. Keep the `# CODE_RUNNER:` comment as the first line of each code cell.
+4. Run each cell and check the output before submitting.
+5. Paste these lines into the description box when you submit:
+
+~~~text
+Lesson: CSP 3.14 Libraries
+Popcorn 1: what I changed = <your change>
+Popcorn 2: my extra route = <your route address>
+Homework: libraries used = <three module names>
+Homework: days until my next game = <value>
+~~~
+
+~~~raw
+---
+layout: post
+title: 3.14 Libraries HW
+categories: [Python]
+lesson_language: Python
+lesson_topic: Libraries HW
+lesson_part: interactive
+lesson_type: lesson
+permalink: /python/libraries-hw
+author: githubID
+---
+~~~
+
+### Submission Safety Rules (Read First)
+
+> [!IMPORTANT]
+> To avoid grading errors, follow these rules exactly:
+>
+> * Keep the `# CODE_RUNNER:` comment as the first line of each submission cell.
+> * Your code must run in the code runner with no errors.
+> * Only import **standard library** modules (such as `math`, `random`, `statistics`, `datetime`, `json`), or `flask`. Other installed packages, such as `pandas`, are not available in the code runner.
+> * Do not use `input()`. The code runner cannot type answers for you.
+
+--- cell 16 ---
+### Homework Hack: Dance Crew Showcase Report
+
+The cell below is a **worked example**: a finished program that reports on Midnight Motion Crew's showcase performances using six standard-library modules. Run it, read how each library is used, then build your own version in your homework notebook.
+
+**Your version must:**
+
+1. **Use at least 3 standard library modules.** This one uses `json`, `datetime`, and `statistics`, plus `csv`, `io`, `math`, and `random` for extra credit.
+2. **Have a procedure like `summarize_season`** that returns the total performance points, average points, best performance, and points earned at each venue.
+3. **Document your API.** Write a docstring giving the parameters and the return value, so someone else could use your procedure without reading the code.
+4. **Use `datetime`** to report how many days are left until your next showcase.
+5. **Write a `requirements.txt`.** Imagine a real version of this app that uses `pandas` for the performance table and `Flask` for the scoreboard page. List those packages, and add a comment explaining why `json` and `datetime` are not listed.
+6. **Extra credit:** Add a validation check, export a CSV season card, calculate rehearsal blocks with `math`, and print a supportive randomized coach note.
+
+Use your own dance crew, styles, venues, performances, and next showcase date. Any dance genre works: hip-hop, jazz, contemporary, ballet, breaking, or freestyle.
+
+--- cell 17 ---
+# CODE_RUNNER: Run it, then replace the sample dancers, performances, and next showcase date
+
+import csv
+import io
+import json
+import math
+import random
+import statistics
+from datetime import date
+
+performances = [
+    {"date": "2026-09-14", "venue": "Riverside Arts Night", "points": 24, "minutes": 28, "style": "hip-hop"},
+    {"date": "2026-09-15", "venue": "Makerspace Showcase", "points": 18, "minutes": 22, "style": "jazz"},
+    {"date": "2026-09-15", "venue": "Riverside Arts Night", "points": 31, "minutes": 30, "style": "contemporary"},
+    {"date": "2026-09-16", "venue": "Roosevelt Open Mic", "points": 27, "minutes": 26, "style": "freestyle"},
+]
+
+
+def summarize_season(season):
+    """
+    Summarize a dance crew's performances.
+
+    Parameters:
+        season: list of dictionaries with date, venue, points, minutes, and style
+    Returns:
+        dictionary with total_points, average_points, best_game,
+        points_by_opponent, and best_style
+    """
+    if not season:
+        raise ValueError("season must contain at least one performance")
+
+    points = [performance["points"] for performance in season]
+
+    points_by_opponent = {}
+    for performance in season:
+        venue = performance["venue"]
+        points_by_opponent[venue] = points_by_opponent.get(venue, 0) + performance["points"]
+
+    best_performance = max(season, key=lambda performance: performance["points"])
+    return {
+        "total_points": sum(points),
+        "average_points": round(statistics.mean(points), 1),
+        "best_game": max(points),
+        "points_by_opponent": points_by_opponent,
+        "best_style": best_performance["style"],
+    }
+
+
+report = summarize_season(performances)
+
+# Subtracting two dates returns a timedelta, and .days is the whole number of days
+next_showcase = date(2026, 10, 15)
+report["days_until_next_showcase"] = (next_showcase - date.today()).days
+report["crew_note"] = "Small steps, full-out finish, and trust the count."
+
+print("MIDNIGHT MOTION CREW REPORT")
+print(json.dumps(report, indent=2))
+
+# Extra credit: turn a performance length into eight-count rehearsal blocks.
+longest_performance = max(performance["minutes"] for performance in performances)
+report["rehearsal_blocks_for_longest_piece"] = math.ceil(longest_performance / 8)
+
+# Extra credit: choose a supportive message without asking for input.
+encouragements = [
+    "Your timing is getting sharper.",
+    "The transition into the final pose is strong.",
+    "Keep the energy honest and enjoy the music.",
+]
+print("Coach note:", random.choice(encouragements))
+print("Eight-count blocks for longest piece:", report["rehearsal_blocks_for_longest_piece"])
+
+# Extra credit: create a CSV season card from the same data.
+season_card = io.StringIO()
+writer = csv.DictWriter(season_card, fieldnames=["date", "venue", "style", "points"])
+writer.writeheader()
+writer.writerows(
+    {key: performance[key] for key in ["date", "venue", "style", "points"]}
+    for performance in performances
+)
+print("\nCSV season card:")
+print(season_card.getvalue().strip())
+
+assert report["total_points"] == 100
+assert report["best_game"] == 31
+assert report["days_until_next_showcase"] == 15
+
+# requirements.txt lists only external packages. json, datetime, statistics,
+# random, math, csv, and io come with Python, so they are never listed.
+requirements_txt = """pandas
+Flask
+"""
+print("requirements.txt:")
+print(requirements_txt)
+
+--- cell 18 ---
+---
+
+## 6. Grading Plan (1 Point Total)
+
+### Classroom Rubric
+
+* **0.2 points: Popcorn completion** (0.1 each)
+  Student submitted their own changed version of Popcorn Hacks 1 and 2, and each cell runs without errors.
+* **0.8 points: Homework completion**
+  * **0.2 libraries:** Imports and uses at least 3 standard library modules.
+  * **0.2 procedure:** `summarize_season` returns total points, average points, best game, and points per opponent.
+  * **0.2 API documentation:** The docstring describes the parameters and the return value.
+  * **0.1 datetime:** The report includes days until a chosen game date.
+  * **0.1 requirements.txt:** Lists `pandas` and `Flask`, and explains why standard library modules are not listed.
+
+### Quick Validation Checklist
+
+* Present: `# CODE_RUNNER:` comment as the first line of each cell.
+* Present: at least 3 different `import` statements from the standard library.
+* Present: a docstring on `summarize_season` giving the parameters and the return value.
+* Present: `json.dumps` output showing the report.
+* Absent: `input()`, external package imports, and errors when run.
+
+=== _notebooks/Homework/2026-09-17-nested-conditionals-python.ipynb ===
+--- cell 1 ---
+# 3.7 Nested Conditionals in Python
+
+A **nested conditional** is an `if` statement inside another `if`, `elif`, or `else` block. The outer decision chooses a path first, and the inner decision checks a more specific condition inside that path. This lesson uses one theme from start to finish: the accounts, homework, meals, and sports that shape a high school student's daily routine.
+
+## 1. LxD Cycle Process
+
+1. **Empathize:** A high school day contains decisions inside other decisions: account access before page permissions, homework before free time, lunch planning before practice, and practice before dinner. Nested conditionals can be confusing because indentation determines which decision owns each inner branch.
+
+2. **Define:**
+- **POV:** CSP students need familiar daily-life examples that make the outside-to-inside order of nested decisions visible.
+- **Learning Goal:** Students will trace, write, test, and explain nested conditionals in a Python student-life dashboard.
+
+3. **Ideate:**
+- **HMW Question:** How might we turn a student's account, homework, meals, and sports schedule into clear nested decisions?
+- **Activity:** Trace an after-school plan, repair an account check, test a lunch-and-practice decision, and build a daily routine dashboard.
+
+4. **Prototype:** Build Tech Talk examples, three Popcorn Hacks, and one Homework Hack that all use the same student-life theme.
+
+5. **Test:** Run every code runner with different account and schedule values, confirm each meaningful path, collect feedback, and record revisions in Section 5.
+
+---
+
+## 2. Lesson Plan
+
+**Learning Objective:** Use nested `if` statements in Python when a student-life decision should happen only after an earlier account or schedule condition selects a path.
+
+**Success Criteria:** You can trace a nested conditional, explain how indentation controls its branches, write a student-life decision with at least three outcomes, and test every meaningful path.
+
+### Lesson Theme — High School Daily Life Dashboard
+
+The lesson follows one student through a normal day:
+- **Accounts:** log in before checking page permissions.
+- **Homework:** check whether work is assigned before checking whether it is finished.
+- **Meals:** plan lunch or a snack around the school and practice schedule.
+- **Sports:** coordinate practice with homework and dinner.
+
+### Tech Talk 1: Student Account Decisions
+
+The outer condition is checked first. The inner condition is reached only when execution enters the block that contains it.
+
+--- cell 6 ---
+# CODE_RUNNER: Popcorn Hack 1 - Test the after-school homework plan
+
+is_weekday = True
+homework_finished = False
+
+if is_weekday:
+    if homework_finished:
+        print("Free time")
+    else:
+        print("Finish homework")
+else:
+    print("Weekend plan")
+
+--- cell 8 ---
+# CODE_RUNNER: Popcorn Hack 2 - Repair the student account check
+
+logged_in = True
+has_permission = False
+
+if logged_in:
+    print("Account found")
+if has_permission:
+    print("Page opened")
+else:
+    print("Permission needed")
+
+--- cell 10 ---
+# CODE_RUNNER: Popcorn Hack 3 - Test the lunch and sports-practice plan
+
+lunch_packed = True
+practice_after_school = True
+
+if lunch_packed:
+    # TODO: Add a nested conditional that checks practice_after_school.
+    pass
+else:
+    # TODO: Add another nested conditional that checks practice_after_school.
+    pass
+
+--- cell 11 ---
+Your completed code should print four different recommendations: packed lunch with practice, packed lunch without practice, buying lunch with practice, and buying lunch without practice. Change both values to test all four outcomes. Then write the same structure in JavaScript and College Board pseudocode and explain which condition is checked first.
+
+### Homework Hack: High School Daily Routine Dashboard
+
+Write your own Python nested conditional from scratch to guide a student through an ordinary school day. The starter runner gives you only the student-life data; you must design the complete decision structure yourself. Your dashboard should combine account access, homework, meals, and sports practice.
+
+Your finished program must:
+1. store at least four student-life values, including login status, homework status, a meal decision, and sports-practice status,
+2. use an outer account `if` / `else` before checking the student's schedule,
+3. contain at least two nested decisions,
+4. produce at least four clear recommendations,
+5. test inputs that reach every meaningful outcome,
+6. include 2–3 sentences explaining why the inner checks depend on the outer decisions.
+
+> **Submission:** Use the runner below to build and test your dashboard. When it works, **scroll to the end of this page** to write or paste your final Python code into the Code Submission form and submit it.
+
+--- cell 12 ---
+# CODE_RUNNER: Homework Hack - Build a high school daily routine dashboard
+
+student = {
+    "logged_in": True,
+    "homework_finished": False,
+    "lunch_packed": True,
+    "practice_today": True
+}
+
+# Write your complete nested conditional below.
+# Do not delete the starter data. Test several value combinations.
+
+--- cell 13 ---
+---
+
+## 4. Grading Plan (1 Point Total)
+
+| Activity | Points | What earns the points |
+| --- | ---: | --- |
+| Popcorn Hack 1 | 0.15 | Correctly trace and test all after-school homework outcomes. |
+| Popcorn Hack 2 | 0.15 | Correctly nest the account permission check and test all login outcomes. |
+| Popcorn Hack 3 | 0.20 | Test all lunch/practice paths, translate the structure, and explain the execution order. |
+| Homework Hack | 0.50 | Build and submit a working student-life dashboard covering accounts, homework, meals, and sports; test all outcomes and explain the nesting. |
+| **Total** | **1.0** | |
+
+---
+
+## 5. Lesson Revisions & Feedback Evidence
+
+- Kept the numbered `1` through `5` lesson structure used by the Boolean Expressions and Random Values lessons.
+- Unified every Tech Talk and hack around one high-school daily-life theme: accounts, homework, meals, and sports.
+- Added assignment metadata so the page provides a code-submission form.
+- Changed the permalink to `/python/nested-conditionals/student-life` to prevent a collision with another team's lesson.
+- Enabled the table of contents for faster navigation.
+- **Feedback applied:** Added a clear instruction telling students to scroll to the bottom of the page to write or paste and submit their final Homework Hack code.
+
+---
+
+## Submit Your Homework
+
+Scroll to the **Code Submission** form directly below this lesson. Choose **Python**, write or paste only your final Homework Hack code, add short testing notes, and submit. Do not paste Markdown code fences.
+
+=== _notebooks/Homework/2026-09-25-conditionals-python.ipynb ===
+--- cell 4 ---
+## 4. Lesson Plan
+
+### Learning Objective
+
+By the end of this lesson you can build a condition out of a comparison, give every condition all of its answers, and order an `elif` chain so that no branch is unreachable.
+
+### Success Criteria
+
+- You can look at an expression like `amount > 100` and say what it evaluates to before running it.
+- Every input to your conditional produces output. Nothing falls off the end.
+- You can look at an `elif` chain and say whether any branch can never run.
+
+> **One rule for the whole lesson:** a condition is a question that always comes back `True` or `False`, and every question needs all of its answers written down.
+
+**One scenario for the whole lesson.** Every example and hack on this page is the same program: **the scam-message trainer from our Friends of Poway Seniors capstone.** A message arrives and the trainer decides what to tell an older adult about it.
+
+**Open a notebook before we start.** There are **two Popcorn Hacks** here and you do them **while we teach**. Copying each finished one into your own portfolio notebook is your job, not ours. The frontmatter you need is in section 6.
+
+This lesson is **one** condition at a time. When two conditions need four *different* answers, that is nesting, and it is a separate topic.
+
+### How the lesson goes
+
+We build one idea at a time, and you run code after each one.
+
+1. **A condition is a question.** Comparisons like `amount > 100` produce `True` or `False`. That value is the condition.
+2. **Example A** — an `if` with no `else`, and the output it does not produce.
+3. **Popcorn Hack 1** — you fix a conditional that is silent for half its inputs.
+4. **Example B** — an `elif` chain with four answers, ordered highest threshold first.
+5. **Popcorn Hack 2** — you fix a chain whose order makes two of its branches unreachable.
+6. **`and` / `or` / `not`** — combining two questions into one condition.
+7. **The same decision in JavaScript and College Board pseudocode.**
+8. **Homework Hack**, which you do at home rather than here.
+
+**Transfer the Popcorn Hacks yourself.** We are not collecting them here. Paste each finished one into your own portfolio notebook as you go — section 6 has the frontmatter.
+
+### Tech Talk
+
+A **condition** is any expression that evaluates to `True` or `False`. That is the whole definition.
+
+Most conditions are not handed to you as `True` or `False` already. You build them out of a **comparison**:
+
+    amount > 100          # a question about a number
+    "gift card" in text   # a question about text
+    sender == "mom"       # a question about equality
+
+`if` runs a block only when the condition is `True`. `else` runs when it is `False`. `elif` asks another question, but **only if every condition above it was False** — which is the thing that makes order matter.
+
+**Why counting matters here.** In most languages a missing case is just wrong. In Python it is wrong *and silent*: `if x:` with no `else`, and `x` false, prints nothing, raises nothing, exits 0.
+
+**The count.** One condition has 2 outcomes, so it needs 2 answers. A chain with 3 thresholds has 4 outcomes, so it needs 4 answers. Count the outcomes on paper, count the `print`s in the code, and compare.
+
+
+--- cell 7 ---
+# CODE_RUNNER: 3.6 - Comparisons make conditions. Every line prints True or False.
+
+message = "URGENT: send $500 in gift cards today to unlock your account"
+amount_requested = 500
+known_contact = False
+
+print("gift card" in message)      # is that text inside the message?
+print(amount_requested > 100)      # is the number bigger?
+print(amount_requested == 0)       # is it exactly zero?
+print(known_contact)               # already a yes/no fact, no comparison needed
+print(len(message) > 200)          # is the message unusually long?
+
+
+--- cell 9 ---
+# CODE_RUNNER: 3.6A - One condition: run it, what prints?
+
+message = "Hi Mom, are we still on for Sunday?"
+
+if "gift card" in message:
+    print("Careful - this message is asking for gift cards.")
+
+
+--- cell 11 ---
+# CODE_RUNNER: 3.6A - One else: now every outcome gets an answer
+
+message = "Hi Mom, are we still on for Sunday?"
+
+# 1 condition -> 2 outcomes -> 2 answers
+if "gift card" in message:
+    print("Careful - this message is asking for gift cards.")
+else:
+    print("No gift card request in this message.")
+
+
+--- cell 13 ---
+# CODE_RUNNER: 3.6 Popcorn 1 - Run it first. Then make both outcomes print.
+
+amount_requested = 0
+
+if amount_requested > 100:
+    print("This message is asking for a large amount of money.")
+
+
+--- cell 15 ---
+# CODE_RUNNER: 3.6B - Four answers from one number, highest threshold first
+
+risk_score = 9
+
+# 3 thresholds -> 4 outcomes -> 4 answers
+if risk_score >= 9:
+    print("Do not reply. This is almost certainly a scam.")
+elif risk_score >= 6:
+    print("This looks risky. Check with someone you trust before replying.")
+elif risk_score >= 3:
+    print("Be a little careful, but this is probably fine.")
+else:
+    print("Nothing suspicious in this message.")
+
+
+--- cell 18 ---
+# CODE_RUNNER: 3.6 Popcorn 2 - Run it first. Then fix the order.
+
+risk_score = 9
+
+if risk_score >= 3:
+    print("Be a little careful, but this is probably fine.")
+elif risk_score >= 6:
+    print("This looks risky. Check with someone you trust before replying.")
+elif risk_score >= 9:
+    print("Do not reply. This is almost certainly a scam.")
+else:
+    print("Nothing suspicious in this message.")
+
+
+--- cell 20 ---
+# CODE_RUNNER: 3.6C - and / or / not, used to build one condition
+
+asks_for_money = True
+known_contact = False
+
+print(asks_for_money and known_contact)   # both must be True
+print(asks_for_money or known_contact)    # either one is enough
+print(not known_contact)                  # flips it
+
+# 1 combined condition -> 2 outcomes -> 2 answers
+if asks_for_money and not known_contact:
+    print("A stranger is asking you for money. Treat it as a scam.")
+else:
+    print("Not a stranger asking for money.")
+
+
+--- cell 22 ---
+%%js
+// CODE_RUNNER: 3.6B JS - The same four answers in JavaScript
+
+let riskScore = 9;
+
+// 3 thresholds -> 4 outcomes -> 4 answers
+if (riskScore >= 9) {
+    console.log("Do not reply. This is almost certainly a scam.");
+} else if (riskScore >= 6) {
+    console.log("This looks risky. Check with someone you trust before replying.");
+} else if (riskScore >= 3) {
+    console.log("Be a little careful, but this is probably fine.");
+} else {
+    console.log("Nothing suspicious in this message.");
+}
+
+
+--- cell 25 ---
+## 6. Hacks & Practice Tasks
+
+### Prepare your submission IPYNB
+
+Two minutes. Do this once and the two Popcorn Hacks have somewhere to live.
+
+1. Create a new notebook in your portfolio under `_notebooks/homework`.
+2. Make the **first cell a raw cell** and paste the frontmatter below. This is the **submission** frontmatter — it is not the same as the frontmatter on this lesson page.
+3. Paste each of your two finished Popcorn Hacks into its own code cell, keeping `# CODE_RUNNER:` as the first line.
+4. Add the Homework Hack below them.
+5. Run every cell, confirm the output, then publish.
+
+    ---
+    layout: post
+    codemirror: true
+    title: 3.6 Conditionals HW
+    categories: [Python]
+    lesson_language: Python
+    lesson_topic: Conditionals HW
+    lesson_part: interactive
+    lesson_type: lesson
+    permalink: /python/conditionals-hw
+    author: yourGithubID
+    ---
+
+`codemirror: true` is the one people leave out. Without it every code editor on your page renders as an empty box.
+
+> **Where the Python runner gets its answers.** On a **published** page it calls the shared class server at `flask.opencodingsociety.com`, and you do not start anything. When you **preview locally** at `localhost`, it calls `localhost:8587` instead, so you have to be running the backend yourself or every Run says *"Failed to fetch."* Start it from your **backend repo** — not your portfolio, which has no `main.py`:
+>
+>     source venv/bin/activate;python main.py
+>
+> Leave it in its own terminal. The JavaScript runner never calls either server, so it works regardless.
+
+### Homework Hack — build the trainer's scoring step
+
+**Do this at home, in your own notebook.** There is no runner for it on this page on purpose — the two hacks above were the interactive part.
+
+Right now `risk_score` is just handed to us. Your job is to compute it, then report on it.
+
+Here is the starting point to copy into your notebook:
+
+    # CODE_RUNNER: 3.6 Homework - score a message, then advise on it
+
+    message = "URGENT: send gift cards now to unlock your account"
+    amount_requested = 500
+    known_contact = False
+
+    risk_score = 0
+
+    # TODO 1: add to risk_score using conditionals, one signal at a time
+    # TODO 2: report on the final score with an if / elif / else chain
+    # TODO 3: count comment in this form, with your real numbers:
+    # N thresholds -> M outcomes -> M answers
+
+**Your task:**
+
+1. **Score the message.** Use a separate `if` for each signal, adding to `risk_score`: +4 if the message mentions gift cards, +3 if the amount asked for is over 100, +2 if the sender is not a known contact. Say in a comment why each of these does **not** need an `else`.
+2. **Report the score** with an `if` / `elif` / `else` chain of at least four answers, ordered so no branch is unreachable.
+3. **Add the count comment** above the chain, in the form above, with your real numbers.
+4. **Prove every branch is reachable.** In a markdown cell, give one set of input values that reaches each answer. If you cannot find inputs for a branch, that branch is dead code — fix the order.
+5. **Test the extremes.** Run it with a completely clean message and with one that trips every signal. Both must print something sensible.
+
+**Stretch, not graded:** your scoring uses `if` with no `else` on purpose, which is the exact thing Example A called a bug. Explain in one sentence why it is fine here and not there.
+
+### Submission safety rules — read first
+
+- Keep `# CODE_RUNNER:` as the first line of every code cell.
+- Your code must run in the code runner with no errors.
+- **Every outcome must `print()` something.** A branch that does nothing is the bug we are grading against.
+- Use `if` / `elif` / `else` only. No `match`, no dictionaries of functions, no one-line ternaries.
+- No `import` and no `input()` — the runner cannot type answers for you.
+
+### Submit your work
+
+1. Put both Popcorn Hacks and the Homework Hack in your own notebook, run every cell, and confirm the output.
+2. Commit and push, then open the **published** page and confirm it loads.
+3. Paste your finished Homework Hack code into the **submission form** at the bottom of this lesson.
+4. In the notes, include the URL of your published page and the line: `3.6 Conditionals popcorn + homework complete`.
+
+The form takes code, but the published notebook is what the Popcorn Hack points are read from — do both.
+
+### Grading Plan — 1 point total
+
+**0.2 — Popcorn Hacks, transferred to your notebook**
+
+| Points | Criterion |
+|---:|---|
+| 0.1 | Popcorn Hack 1 — both outcomes print, count comment present |
+| 0.1 | Popcorn Hack 2 — order fixed, and the unreachable branches correctly named |
+
+**0.8 — Homework Hack**
+
+| Points | Criterion | What we look for |
+|---:|---|---|
+| 0.2 | Scoring step | A separate `if` per signal, with a comment explaining why no `else` is needed |
+| 0.2 | Reporting chain | At least four answers, `else` at the end, every score from 0 upward lands somewhere |
+| 0.2 | Reachability proof | One set of in
+
+--- cell 26 ---
+## 7. Lesson Revisions
+
+**Revision 1.** Rebuilt on one scenario that grows, rather than restarting with a new story every example — the scam-message trainer from our Friends of Poway Seniors capstone, which is the part of the project this logic runs in. Added the same decision in JavaScript and College Board pseudocode.
+
+**Revision 2 — hacks restructured.** Our draft had one Popcorn Hack parked at the bottom next to the homework, which meant most of the lesson passed before the class touched anything. The hacks now sit directly under the examples they check, and the Homework Hack lost its code runner because it is meant to be done at home in the student's own notebook. Added the required submission frontmatter, which differs from lesson frontmatter, and a run-of-show table in section 4.
+
+**Revision 3 — topic changed to 3.6 Conditionals.** Another team in 4th period was already building a Nested Conditionals lesson, and both of ours were claiming the same `lesson_topic` and `categories`, so the lessons index treated them as one slot. We talked to them, they are keeping 3.07 Nested Conditionals, and we moved down a topic to 3.6 Conditionals. **Our old nested-conditionals lesson is deleted in the same pull request as this file is added**, so the Nested-Conditionals topic is theirs alone.
+
+That turned out to be more than a rename. 3.7 handed students their Booleans already decided (`asks_for_money = False`); 3.6 is where the Boolean gets *built* out of a comparison, which we had never taught. The lesson gained a whole opening section on comparison operators, and Popcorn Hack 2 changed from a nested-guard ordering bug to an `elif` chain ordering bug — the same idea at this topic's difficulty, and a failure mode that counting answers cannot detect. `and` / `or` / `not` are used but deliberately not taught here, with a pointer to 3.5 Booleans; the section on where `and` runs out points forward to 4th period's nested lesson.
+
+
+=== _notebooks/Homework/Sass/2026-09-20-containers.ipynb ===
+--- cell 23 ---
+### Homework Hack
+
+**Parade Hub Page (~30 minutes)**
+
+Build a full container page for the Poway Scripps Rotary Parade. Do the required part (~20 min) in a notebook cell; the SASS extra is optional (~10 min).
+
+**Starter runner** — edit the code below and press **Run**:
+
+=== _notebooks/Homework/Sass/2026-09-22-grids.ipynb ===
+--- cell 14 ---
+---
+
+## 6. Hacks & Practice Tasks
+
+### Submit Details
+
+1. Create a notebook in your portfolio homework area: `_notebooks/homework`.
+2. Add a markdown cell with the frontmatter below.
+3. Add code cells for the Popcorn Hacks and the Homework Hack.
+4. Keep `%%html` and the `UI_RUNNER` comment in each code cell.
+5. Run each cell and verify the rendered result before submitting.
+
+```raw
+---
+layout: post
+title: SASS Grids HW
+categories: [SASS]
+lesson_language: SASS
+lesson_topic: Grids HW
+lesson_part: interactive
+lesson_type: lesson
+permalink: /sass/grids-hw/
+author: githubID
+---
+```
+
+Use one code cell per hack, with the matching runner comment:
+
+```html
+%%html
+<!-- UI_RUNNER: Grids Popcorn 1 -->
+```
+
+```html
+%%html
+<!-- UI_RUNNER: Grids Popcorn 2 -->
+```
+
+```html
+%%html
+<!-- UI_RUNNER: Grids Homework -->
+```
+
+### How to Submit
+
+This lesson is submitted as a **link** to your own published portfolio/blog page.
+
+* Commit and push the notebook so the page builds.
+* Open the **published page** in your browser and confirm every grid renders.
+* Copy the full published URL, not the GitHub editor or repository URL.
+* Paste that URL into the built-in **Link Submission** form directly below this lesson.
+* In the description box, paste this:
+
+~~~text
+Lesson: OCS Grid Grammar (SASS Grids)
+MCQ Grids: <paste the copied result line, such as 4/4 | answers: A,B,C,D>
+Popcorn 1: three beakers refactored to ocs__grid (yes/no)
+Popcorn 2: fr values used = <your values>
+Homework: every check shows PASS (yes/no)
+~~~
+
+### Submission Safety Rules (Read First)
+
+* No custom CSS, no inline `style`, and no made up classes (the `fr` hacks are the only place a style is allowed).
+* Only use these classes: `ocs__card`, `ocs__grid`, `ocs__grid--*`, `cols-*`, `ocs__grid-cell`, and `ocs__grid-cell--*`.
+* Use exactly one variant class on each grid.
+* Include your MCQ score line.
+* If a runner breaks, press **Reset** to get the starter code back.
+* Keep `%%html` and the `UI_RUNNER` comment line in each notebook submission cell.
+* Use `##` headings or smaller on your page.
+
+### Popcorn Hack 1 (In-Class): Fix the Beaker Row
+
+2-minute challenge: the code below lists three test beakers, but it uses an inline style and a made up `box` class. Replace them with OCS grid classes and press **Run**.
+
+**Goal:** end up with one `ocs__grid`, one standard variant, and three `ocs__grid-cell` boxes, one per beaker. No `style` attribute and no `box` class should be left.
+
+--- cell 20 ---
+### Homework Hack
+
+**Task:** Fix the code below. Remove every inline style and made up class and use OCS classes instead.
+
+* **Grid 1:** a standard grid. The title becomes a **header** cell. Beaker 3 is the outlier, so it becomes an **accent** cell.
+* **Grid 2:** a **calculator** grid, which is a keypad for typing in beaker readings. The `Avg` key becomes an **accent** cell.
+
+**Goal:** this is the whole lesson in one task. You pick the variant, put a cell class on every box, and use the right cell type for the title and the outlier.
+
+Edit the HTML inside the quotes and press **Run**. The checklist at the top of the output marks each rule **PASS** or **FIX**. Keep going until every line says **PASS**.
+
+--- cell 21 ---
+{% capture challenge8 %}
+Homework Hack: fix both grids using only OCS classes. Press Run and keep going until every check says PASS.
+{% endcapture %}
+
+{% capture code8 %}
+// Fix the HTML inside the quotes, then press Run.
+let myHTML = [
+  '<div class="my-row">',
+  '  <div class="title-box" style="width: 100%;">Temperature Trial (°C)</div>',
+  '  <div class="sample-card">Beaker 1: 22.4</div>',
+  '  <div class="sample-card">Beaker 2: 22.9</div>',
+  '  <div class="sample-card highlight">Beaker 3: 31.6</div>',
+  '</div>',
+  '<div style="display: grid; grid-template-columns: repeat(4, 1fr);">',
+  '  <div class="key">7</div>',
+  '  <div class="key">8</div>',
+  '  <div class="key">9</div>',
+  '  <div class="key orange">Avg</div>',
+  '</div>'
+].join('');
+
+// ---- You do not need to change anything below this line ----
+let classList = [];
+for (let found of (myHTML.match(/class="[^"]*"/g) || [])) {
+  classList = classList.concat(found.slice(7, -1).split(' ').filter(c => c !== ''));
+}
+let madeUp = classList.filter(c => !c.startsWith('ocs__') && !c.startsWith('cols-'));
+
+function line(label, ok) { return '<li>' + (ok ? 'PASS  ' : 'FIX  ') + label + '</li>'; }
+let checks = '<ul>' +
+  line('No inline style attributes', !myHTML.includes('style=')) +
+  line('No made up classes' + (madeUp.length > 0 ? ' (found: ' + madeUp.join(', ') + ')' : ''), madeUp.length === 0) +
+  line('Has an ocs__grid root', classList.includes('ocs__grid')) +
+  line('Uses the standard variant for Grid 1', classList.includes('ocs__grid--standard')) +
+  line('Uses the calculator variant for Grid 2', classList.includes('ocs__grid--calculator')) +
+  line('Every box uses ocs__grid-cell', classList.filter(c => c === 'ocs__grid-cell').length >= 8) +
+  line('Title is a header cell', classList.includes('ocs__grid-cell--header')) +
+  line('Has accent cells (outlier beaker and Avg key)', classList.filter(c => c === 'ocs__grid-cell--accent').length >= 2) +
+  '</ul>';
+
+outputElement.innerHTML = checks + myHTML;
+{% endcapture %}
+
+{% include runners/ui.html
+   runner_id="grids-ui-8"
+   challenge=challenge8
+   code=code8
+   autostart="true"
+%}
+
+=== _notebooks/Homework/Sass/2026-09-23-buttons.ipynb ===
+--- cell 9 ---
+<br>
+
+## 6. Hacks & Practice Tasks
+
+### Prepare Your Submission IPYNB
+
+To complete and submit your work for this lesson, create a dedicated Jupyter Notebook (`.ipynb`) in your **portfolio** repository following these steps:
+
+1. Create a notebook in your portfolio homework area: `_notebooks/homework`.
+2. Add a markdown cell at the top with the required frontmatter.
+3. Add code cells for all three Popcorn Hacks and the Homework Hack.
+4. Keep `%%html` and the `<!-- UI_RUNNER: ... -->` comment in each code cell.
+5. Run each cell and verify the rendered result before submitting.
+
+```raw
+---
+layout: post
+title: SASS Button Grammar HW
+categories: [SASS]
+lesson_language: SASS
+lesson_topic: Buttons HW
+lesson_part: interactive
+lesson_type: lesson
+permalink: /sass/buttons-hw/
+author: githubID
+---
+```
+
+<br>
+
+### Submission Safety Rules (Read First)
+
+> [!IMPORTANT]
+> * Keep `%%html` and the `<!-- UI_RUNNER: ... -->` comment line intact at the top of your notebook cell.
+> * Remove **all** inline `style="..."` attributes and custom non-OCS classes.
+> * Use **only** semantic tags (`<button>`, `<a>`) paired with OCS SASS classes (`ocs__btn`, `pill`, `fill`, `outline`, `accent`, `alert-green`, `alert-yellow`, `alert-red`).
+> * Structure action groups inside layout containers (`ocs__links`, `ocs__links--wide`).
+
+1. Add code cells for all 3 Popcorn Hacks and the Homework Hack. Make sure every cell runs with visible UI output.
+2. Submit the link to your published page at the bottom of this page.
+
+--- cell 10 ---
+<br>
+
+## Homework Hacks
+
+### Homework Hack #1: Adaptive Resource Toolbar (OCS SASS Modifiers & Tones)
+
+**Goal:** Change the unorganized, limited resource badges below into standardized OCS SASS status actions for *My Good Brain* resource categories (*Urgent Support*, *Self-Care*, *Community*).
+
+#### Requirements:
+1. Wrap all three actions in an `ocs__links` layout container.
+2. Remove all inline `style="..."` attributes and hardcoded hex colors.
+3. Apply semantic OCS classes to match each category's urgency:
+   * **Urgent Support:** Use `ocs__btn alert-red fill pill`
+   * **Self-Care:** Use `ocs__btn alert-green fill pill`
+   * **Community:** Use `ocs__btn accent outline pill`
+
+<br>
+
+#### Starter Code (Copy to Notebook):
+
+```html
+<div style="padding: 12px; display: flex; gap: 8px;">
+  <!-- TODO: Refactor into OCS SASS utility classes -->
+  <a href="[https://www.mygoodbrain.org/resources](https://www.mygoodbrain.org/resources)" style="background: red; color: white; padding: 6px 12px; border-radius: 20px; font-weight: bold;">Urgent Support</a>
+  <a href="[https://www.mygoodbrain.org/resources](https://www.mygoodbrain.org/resources)" style="background: teal; color: white; padding: 6px 12px; border-radius: 20px;">Self-Care</a>
+  <a href="[https://www.mygoodbrain.org/resources](https://www.mygoodbrain.org/resources)" style="border: 1px solid purple; color: purple; padding: 6px 12px; border-radius: 20px;">Community</a>
+</div>
+```
+
+--- cell 11 ---
+<br>
+
+### Homework Hack #2: Primary vs. Secondary Action Priority (OCS Modifiers & Hierarchy)
+
+**Goal:** Change an unorganized mental health check-in panel into a structured action row that uses visual hierarchy (fill vs. outline vs. subtle) so students can immediately distinguish the main action from support options.
+
+#### Requirements:
+1. Wrap all three actions in an `ocs__links` layout container.
+2. Remove all inline `style="..."` attributes and custom CSS classes.
+3. Apply standard OCS SASS classes to create a clear visual hierarchy:
+   * **Primary Action ("Log Mood Entry"):** High priority — use `ocs__btn accent fill`
+   * **Secondary Action ("View Weekly Trends"):** Medium priority — use `ocs__btn outline`
+   * **Subtle Action ("Crisis Hotline"):** Alert priority — use `ocs__btn alert-red outline`
+   
+<br>
+
+#### Starter Code (Copy to Notebook):
+
+```html
+<div style="background: #ffffff; padding: 16px; border-radius: 8px;">
+  <!-- TODO: Refactor using ocs__links container and OCS hierarchy classes -->
+  <button style="background: #0d9488; color: white; padding: 10px 16px; font-weight: bold; border: none;">Log Mood Entry</button>
+  <a href="[https://www.mygoodbrain.org/resources](https://www.mygoodbrain.org/resources)" style="border: 1px solid #0d9488; color: #0d9488; padding: 10px 16px; text-decoration: none;">View Weekly Trends</a>
+  <a href="[https://www.mygoodbrain.org/resources](https://www.mygoodbrain.org/resources)" style="color: red; border: 1px solid red; padding: 10px 16px; text-decoration: none;">Mental Health Blog</a>
+</div>
+```
+
+--- cell 12 ---
+<br>
+
+### Grading Plan (1 Point Total)
+
+| Part | Points | What earns the points |
+| :--- | :--- | :--- |
+| **Popcorn Hacks (1–3)** | **0.30** | Completes all 3 interactive Popcorn Hacks (Base Classes, Modifiers, and Layout Containers) in code runners with active cell executions (0.10 pts each). |
+| **Homework Hack 1: Adaptive Resource Badges** | **0.35** | Correctly changes raw styles into OCS utility classes (`ocs__btn`, `pill`, `fill`, `alert-red`, `alert-green`, `accent`) wrapped in `ocs__links`. |
+| **Homework Hack 2: Visual Action Hierarchy** | **0.35** | Establishes clear visual priority using primary (`fill`), secondary (`outline`), and alert tones on actions wrapped in `ocs__links`. |
+| **Total** | **1.00** | |
