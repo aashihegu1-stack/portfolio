@@ -246,18 +246,21 @@ class CodeRunner:
 
     def liquid_lines(self, code_fence_lines: list[str], code_runner_count: int) -> list[str]:
         """Render Jekyll Liquid captures/includes for embedding the code runner widget."""
+        challenge = escape_liquid_syntax(self.challenge)
+        code = escape_liquid_syntax(self.code)
+        source_lines = [escape_liquid_syntax(line) for line in code_fence_lines]
         return [
             '',
             '{% capture challenge' + str(code_runner_count) + ' %}',
-            self.challenge,
+            challenge,
             '{% endcapture %}',
             '',
             '{% capture code' + str(code_runner_count) + ' %}',
-            self.code,
+            code,
             '{% endcapture %}',
             '',
             '{% capture source' + str(code_runner_count) + ' %}',
-            *code_fence_lines,
+            *source_lines,
             '{% endcapture %}',
             '',
             '{% include runners/code.html',
@@ -522,14 +525,16 @@ class GameRunner:
 
     def liquid_lines(self, code_runner_count: int) -> list[str]:
         """Render Jekyll Liquid captures/includes for embedding the game runner widget."""
+        challenge = escape_liquid_syntax(self.challenge)
+        code = escape_liquid_syntax(self.code)
         lines = [
             '',
             '{% capture challenge' + str(code_runner_count) + ' %}',
-            self.challenge,
+            challenge,
             '{% endcapture %}',
             '',
             '{% capture code' + str(code_runner_count) + ' %}',
-            self.code,
+            code,
             '{% endcapture %}',
             '',
             '{% include runners/game.html',
@@ -643,6 +648,15 @@ def get_relative_output_path(notebook_file):
     markdown_filename = relative_path.replace(".ipynb", "_IPYNB_2_.md")
 
     return os.path.join(destination_directory, markdown_filename)
+
+
+def escape_liquid_syntax(text: str) -> str:
+    """Escape literal Liquid double-brace sequences inside code examples so Jekyll does not try to interpret them."""
+    if not isinstance(text, str):
+        return text
+    escaped = text.replace("{{", "&#123;&#123;")
+    escaped = escaped.replace("}}", "&#125;&#125;")
+    return escaped
 
 
 def fix_js_code_blocks(markdown):
@@ -1059,6 +1073,7 @@ def convert_notebook_to_markdown_with_front_matter(notebook_file):
         mermaid_graph.process_cells(notebook)
         exporter = MarkdownExporter()
         markdown, _ = exporter.from_notebook_node(notebook)
+        markdown = escape_liquid_syntax(markdown)
         markdown = fix_js_code_blocks(markdown) # Fix JS code blocks
         
         # Inject code-runner includes (and submit buttons if challenge_submit is enabled)
