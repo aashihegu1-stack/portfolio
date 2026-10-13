@@ -17,8 +17,17 @@ assignment: true
 codemirror: true
 microblog: true
 permalink: /sass/typography
-author: Tristan Chiu, Mateo Durand Amador, Barbara Zhao
+author: Aashi Hegu
+submitted_by: Aashi Hegu
+submitted_on: 2026-09-15
 ---
+
+## Done by Aashi
+
+## Submitted by Aashi Hegu
+
+_Submitted on 2026-09-15._
+
 
 ## 1. Reference Guide
 
