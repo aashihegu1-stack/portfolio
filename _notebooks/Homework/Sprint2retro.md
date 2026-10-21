@@ -1,29 +1,134 @@
-{
- "cells": [
-  {
-   "cell_type": "raw",
-   "id": "e2786e77",
-   "metadata": {
-    "vscode": {
-     "languageId": "raw"
-    }
-   },
-   "source": [
-    "---\n",
-    "layout: post\n",
-    "title: Sprint 2: Retrospecting\n",
-    "author: Aashi Hegu\n",
-    "breadcrumb: true\n",
-    "permalink: /game/essentials/Sprint-2-Retrospecting/\n",
-    "---"
-   ]
-  }
- ],
- "metadata": {
-  "language_info": {
-   "name": "python"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 5
-}
+---
+layout: post
+courses: { csse: {week: 4}, csp: {week: 9} }
+codemirror: true
+title: Sprint 2 Retrospective Review
+description: Review of MCQ practice and the past 8 weeks
+permalink: /stwo_retro
+---
+
+# Past 8 Weeks
+
+The past eight weeks have been very productive and fruitful as they were the first eight weeks of the year altogether. Here are the things we have done and finished throughout the past eight weeks!
+
+## Sprint 1: Setting Up Tools & Work Habits (Weeks 0–4)
+
+During the first four weeks of school, we focused on getting initialized and setting up tools like VS Code and GitHub.
+
+### Initial Capstone Ideation
+
+Our group decided to inherit the ACS capstone project.
+
+**Target Audience**
+
+Cancer patients in need of a safe space and those involved with cancer patients who would like to learn more.
+
+**Objective**
+
+Users need a safe space where people understand what they are going through and can learn more about cancer because younger generations usually aren't aware of how cancer works at a biological level, leading to a lack of understanding of what cancer patients go through.
+
+**Success Statement**
+
+We know this works when we have a website where people can not only learn about cancer but also connect and ask questions.
+
+**Scope**
+
+This project will not include excessive educational content.
+
+---
+
+## Sprint 2: Full Stack Foundations (Weeks 5–8)
+
+Sprint 2 had more of a workload, with more projects and more coding.
+
+### Toggles Lesson
+
+I enjoyed the toggles lesson because it taught me more about Sass and how it works, while also introducing something fun and unique.
+
+[**View Toggles Lesson**](https://pages.opencodingsociety.com/sass/toggles)
+
+[**View Planning Issue**](https://github.com/undergroundrapclub/pages/issues/7)
+
+#### Lesson Plan
+
+1. **Introduction:** Explain what toggles are and where they are used, such as notifications, settings, and turning features on or off.
+2. **OCS Sass Version:** Introduce the OCS Sass system and explain why reusable classes are preferable to writing custom CSS every time.
+3. **Creating a Toggle:** Demonstrate the basic structure of a toggle before introducing labels and checked states.
+4. **Code Runners:** Allow students to edit examples and test their code using starter code.
+5. **UI Runners:** Let students see and interact with the toggles they create.
+6. **Accessibility:** Cover labels, keyboard usability, visible focus, and accessible names.
+7. **Using OCS Sass:** Explain preference variables such as `--pref-text-color`, `--pref-accent-color`, `--ui-bg`, and `--ui-border`.
+8. **Practice:** Have students create a small settings section with two or three toggles, labels, a default checked state, and an OCS card.
+
+#### Keeping the Lesson Easy to Follow
+
+We will introduce concepts gradually, keep examples short, explain new classes and Sass variables before using them, and use code and UI runners to help students understand how their changes affect the interface.
+
+#### What Makes This Better
+
+The original lesson mostly shows different toggle options. Our version explains the purpose of each part, uses the OCS Sass system, includes interactive code and UI runners, and gives students opportunities to practice.
+
+**Expected Result:** Students should be able to create a simple, reusable toggle using OCS Sass, keep it accessible, test their code, and see how it works in the UI runner.
+
+### Frontend and Backend
+
+We learned a little about managing the frontend and backend of our capstone projects. They are interesting because they rely on ports and can connect to one another without a manual trigger each time.
+
+### APIs
+
+We briefly touched on APIs in class and how they work in the backend. My understanding of them is still developing because this is my first time hearing about and working with them.
+
+**What we plan to do with APIs:**
+
+- Store usernames and passwords.
+- Develop a cancer risk assessment.
+- Continue brainstorming additional uses.
+
+---
+
+## Practice Multiple Choice Quiz
+
+Overall, I reviced a : **54/66**.
+
+### Topics to Review
+
+- **Internet standards and protocols:** Understand the role of the Internet Engineering Task Force (IETF) and the benefits of open standards.
+- **Network redundancy:** Identify network configurations that allow redundant routing.
+- **Algorithms and robot movement:** Evaluate whether programs correctly achieve a goal.
+- **Lists and averages:** Understand how loops and variable updates affect calculations.
+- **Modulo and conditionals:** Determine how to use `MOD` to identify every tenth purchase.
+- **Procedures and score calculations:** Apply procedures such as `Max` to calculate adjusted totals.
+- **IPv4 and IPv6:** Understand how increasing an IP address from 32 bits to 128 bits changes the number of possible addresses.
+- **Algorithm efficiency:** Analyze how the number of steps grows as input size increases.
+
+**Goal:** Practice AP-style questions, strengthen my understanding of unfamiliar concepts, and improve my ability to apply what I learn.
+
+[**View MCQ Review**](https://apclassroom.collegeboard.org/103/assessments/results/81448189/resources)
+
+---
+
+## Main Areas for Improvement
+
+| Focus Area | How I Can Improve |
+|---|---|
+| Time Management | Plan ahead and avoid rushing assignments. |
+| Problem Solving | Work through difficult problems more independently. |
+| Coding Skills | Practice more advanced concepts and learn how code works. |
+| Debugging | Find and fix errors more efficiently. |
+| Communication | Share my ideas and ask questions more often. |
+| Teamwork | Contribute ideas and communicate with my team. |
+| Organization | Keep my files and work organized. |
+| Learning from Mistakes | Use mistakes to understand what I can do better. |
+
+---
+
+## Quick Links
+
+[**Ground Zero 2.0**](https://github.com/aashihegu1-stack/portfolio/issues/2)
+
+[**Module Ideation**](https://github.com/undergroundrapclub/portfolio/issues/17)
+
+[**Pages Issue 7 — Sass Toggles**](https://github.com/undergroundrapclub/pages/issues/7)
+
+[**Back to Portfolio**](https://aashihegu1-stack.opencodingsociety.com/)
+
