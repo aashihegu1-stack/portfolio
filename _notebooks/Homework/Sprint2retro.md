@@ -11,6 +11,8 @@ permalink: /stwo_retro
 
 The past eight weeks have been very productive and fruitful as they were the first eight weeks of the year altogether. Here are the things we have done and finished throughout the past eight weeks!
 
+Reflection of my skills: [**Ground Zero 2.0**](https://github.com/aashihegu1-stack/portfolio/issues/2)
+
 ## Sprint 1: Setting Up Tools & Work Habits (Weeks 0–4)
 
 During the first four weeks of school, we focused on getting initialized and setting up tools like VS Code and GitHub.
@@ -34,6 +36,8 @@ We know this works when we have a website where people can not only learn about 
 **Scope**
 
 This project will not include excessive educational content.
+
+[**Module Ideation**](https://github.com/undergroundrapclub/portfolio/issues/17)
 
 ---
 
@@ -69,6 +73,8 @@ We will introduce concepts gradually, keep examples short, explain new classes a
 The original lesson mostly shows different toggle options. Our version explains the purpose of each part, uses the OCS Sass system, includes interactive code and UI runners, and gives students opportunities to practice.
 
 **Expected Result:** Students should be able to create a simple, reusable toggle using OCS Sass, keep it accessible, test their code, and see how it works in the UI runner.
+
+[**Pages Issue 7 — Sass Toggles**](https://github.com/undergroundrapclub/pages/issues/7)
 
 ### Frontend and Backend
 
@@ -129,6 +135,8 @@ Overall, I reviced a : **54/66**.
 [**Module Ideation**](https://github.com/undergroundrapclub/portfolio/issues/17)
 
 [**Pages Issue 7 — Sass Toggles**](https://github.com/undergroundrapclub/pages/issues/7)
+
+[**View MCQ Review**](https://apclassroom.collegeboard.org/103/assessments/results/81448189/resources)
 
 [**Back to Portfolio**](https://aashihegu1-stack.opencodingsociety.com/)
 
