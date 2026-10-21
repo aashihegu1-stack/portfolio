@@ -4,7 +4,7 @@ courses: { csse: {week: 4}, csp: {week: 9} }
 codemirror: true
 title: Sprint 2 Retrospective Review
 description: Review of MCQ practice and the past 8 weeks
-permalink: /stwo_retro
+permalink: /two_retro
 ---
 
 # Past 8 Weeks
